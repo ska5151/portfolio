@@ -1,0 +1,22 @@
+{
+  "objective": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+  "risk": "routine",
+  "constraints": [
+    "Preserve all Template C sections (01.PROFILE through 06.ARCHIVES), hero section, modal/toast helpers, and footer",
+    "Remove the sticky top template selector panel (<header>)"
+  ],
+  "nonGoals": [
+    "Do not alter portfolioData content or brand color palette"
+  ],
+  "decisions": [
+    {
+      "id": "template-selection",
+      "owner": "user",
+      "status": "resolved",
+      "question": "Which template should be displayed and what should happen to the top panel?",
+      "answer": "Display only Template C (3. 에디토리얼 미니멀) and delete the top template selector panel (<header>)",
+      "basis": "Explicit user request: '3. 에디토리얼 미니멀 으로만 보일 수 있게 하고 상단 패널 삭제해주세요.'"
+    }
+  ],
+  "conflicts": []
+}

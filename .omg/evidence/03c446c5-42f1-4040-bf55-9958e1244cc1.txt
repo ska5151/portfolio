@@ -1,0 +1,1 @@
+Validation passed: Only Editorial Minimal (Template C) is rendered at runtime and the top panel is removed.

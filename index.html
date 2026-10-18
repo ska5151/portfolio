@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>권성윤 (Sungyun Kwon) — 에디토리얼 미니멀 포트폴리오</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Pretendard & JetBrains Mono Fonts -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            main: '#6A89A7',     // 메인 테마 색상
+                            sub: '#BDDDFC',      // 서브 배경, 태그 및 하이라이트
+                            accent: '#888DF2',   // 버튼, 아이콘, 강조 포인트
+                            dark: '#384959',     // 타이틀 텍스트, 네비게이션 및 어두운 배경 영역
+                            light: '#F4F8FB'     // 가독성을 위한 초연한 배경 틴트
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'Roboto', 'sans-serif'],
+                        mono: ['"JetBrains Mono"', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            color: #384959;
+            background-color: #F4F8FB;
+            overflow-x: hidden;
+        }
+        /* 커스텀 스크롤바 */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F4F8FB;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #6A89A7;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #384959;
+        }
+        .template-fade {
+            animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .skill-bar-fill {
+            transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .card-hover {
+            transition: all 0.25s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 16px 32px -12px rgba(56, 73, 89, 0.15);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-brand-sub selection:text-brand-dark">
+
+    <!-- 메인 템플릿 렌더링 영역 -->
+    <main id="template-viewport" class="flex-1">
+        <!-- 에디토리얼 미니멀 포트폴리오가 렌더링됩니다 -->
+    </main>
+
+    <!-- 첨부 문서 암호 입력 모달 -->
+    <div id="doc-modal" class="fixed inset-0 z-50 hidden items-center justify-center bg-brand-dark/75 backdrop-blur-sm p-4">
+        <div class="bg-white rounded-2xl max-w-md w-full border border-brand-sub shadow-2xl overflow-hidden animate-[fadeIn_0.2s_ease-out]">
+            <div class="bg-brand-dark text-white px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-lg bg-brand-accent/20 border border-brand-accent flex items-center justify-center text-brand-sub">
+                        <i data-lucide="lock" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h3 id="modal-doc-title" class="font-bold text-base">문서 다운로드</h3>
+                        <p id="modal-doc-meta" class="text-xs text-brand-sub/80 font-mono">PDF Document</p>
+                    </div>
+                </div>
+                <button onclick="closeDocModal()" class="text-white/70 hover:text-white p-1 rounded-lg hover:bg-white/10 transition">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="space-y-2">
+                    <label for="doc-password-input" class="block text-xs font-bold text-brand-dark">다운로드 암호를 입력해주세요.</label>
+                    <input
+                        id="doc-password-input"
+                        type="password"
+                        placeholder="암호 입력"
+                        onkeydown="if(event.key === 'Enter') confirmDocDownload()"
+                        class="w-full px-4 py-2.5 rounded-xl border border-brand-sub bg-brand-light text-brand-dark text-sm font-mono focus:outline-none focus:border-brand-accent"
+                    />
+                    <p id="doc-password-error" class="hidden text-xs font-semibold text-red-500">암호가 올바르지 않습니다.</p>
+                </div>
+                <div class="flex items-center justify-end gap-2.5 pt-2">
+                    <button onclick="closeDocModal()" class="px-4 py-2.5 rounded-xl border border-brand-main/40 text-brand-dark text-sm font-semibold hover:bg-brand-light transition">
+                        닫기
+                    </button>
+                    <button id="modal-download-btn" onclick="confirmDocDownload()" class="px-5 py-2.5 rounded-xl bg-brand-accent text-white text-sm font-semibold hover:opacity-95 transition flex items-center gap-2 shadow-md">
+                        <i data-lucide="download" class="w-4 h-4"></i>
+                        <span>다운로드</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 클립보드 복사 및 알림 토스트 -->
+    <div id="toast-box" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 bg-brand-dark text-white px-4 py-3 rounded-xl shadow-xl border border-brand-sub/30">
+        <div class="w-7 h-7 rounded-lg bg-brand-accent flex items-center justify-center text-white shrink-0">
+            <i data-lucide="check" class="w-4 h-4"></i>
+        </div>
+        <span id="toast-message" class="text-sm font-medium">클립보드에 복사되었습니다.</span>
+    </div>
+
+    <script>
+        // 포트폴리오 공통 데이터 (필수 6개 섹션 데이터 완비)
+        const portfolioData = {
+            profile: {
+                name: "권성윤 (Sungyun Kwon)",
+                engTitle: "Senior Full-Stack & Cloud Architect",
+                tagline: "사용자의 본질적인 니즈를 깊이 고민하고 시스템의 빈틈을 집요하게 메우며, 완성도 높은 차별화된 서비스를 구현하는 개발자입니다.",
+                avatar: "image/profile.png",
+                fallbackAvatar: "https://placehold.co/400x400/384959/BDDDFC?text=SK",
+                email: "ska515151@gmail.com",
+                phone: "010-2387-0635",
+                location: "대구광역시 수성구 청호로 96안길 33 아스톤하우스 301호",
+                status: "이직 및 기술 자문 논의 가능",
+                socials: [
+                    { name: "GitHub", handle: "github.com/sungyun-arch", url: "https://github.com", icon: "github" },
+                    { name: "LinkedIn", handle: "linkedin.com/in/sungyun-kwon", url: "https://linkedin.com", icon: "linkedin" },
+                    { name: "Tech Blog", handle: "velog.io/@sungyun-cloud", url: "https://velog.io", icon: "globe" },
+                    { name: "Portfolio Notion", handle: "sungyun.notion.site", url: "https://notion.so", icon: "book-marked" }
+                ],
+                metrics: [
+                    { label: "총 개발 경력", value: "7년+" },
+                    { label: "프로덕션 배포", value: "28건" },
+                    { label: "시스템 가용성", value: "99.98%" },
+                    { label: "오픈소스 기여", value: "42 PRs" }
+                ]
+            },
+            skills: [
+                {
+                    category: "Frontend Engineering",
+                    icon: "layout",
+                    items: [
+                        { name: "TypeScript / React 19", stars: "★★★★☆" },
+                        { name: "C#", stars: "★★★★★" },
+                        { name: "VB6", stars: "★★★★☆" },
+                        { name: "JSP", stars: "★★★☆☆" }
+                    ]
+                },
+                {
+                    category: "Backend & Distributed System",
+                    icon: "server",
+                    items: [
+                        { name: "MySql", stars: "★★★★★" },
+                        { name: "Oracle", stars: "★★★☆☆" },
+                        { name: "Node.js", stars: "★★★☆☆" }
+                    ]
+                },
+                {
+                    category: "DevOps & Cloud Native",
+                    icon: "cloud-cog",
+                    items: [
+                        { name: "AWS", stars: "★★★☆☆" },
+                        { name: "Docker", stars: "★★☆☆☆" }
+                    ]
+                }
+            ],
+            projects: [
+                {
+                    id: "proj-1",
+                    category: "(주) 케이비드",
+                    title: "정비마법사2",
+                    period: "",
+                    summary: "차량 및 오토바이 정비 윈도우 프로그램",
+                    details: [],
+                    techs: ["C#", "Mysql", "DevExpress"]
+                },
+                {
+                    id: "proj-2",
+                    category: "(주) 케이비드",
+                    title: "JUCHA 백엔드 API 작업",
+                    period: "",
+                    summary: "차량 및 오토바이 주차 관리 시스템",
+                    details: ["베트남 타겟"],
+                    techs: ["Node"]
+                },
+                {
+                    id: "proj-3",
+                    category: "(주) 케이비드",
+                    title: "대한자동차",
+                    period: "",
+                    summary: "자동차 부품 생산 프로그램",
+                    details: ["POP용, 사무실용, 대시보드용"],
+                    techs: ["C#", "Mysql", "DevExpress"]
+                },
+                {
+                    id: "proj-4",
+                    category: "(주) 케이비드",
+                    title: "탈라고 백엔드 API 작업",
+                    period: "",
+                    summary: "차량점검 프로그램",
+                    details: ["원격지 차량점검 및 차량 정비, 서비스 판매-구매 예약"],
+                    techs: ["Node"]
+                },
+                {
+                    id: "proj-5",
+                    category: "(주) 케이비드",
+                    title: "다이슈",
+                    period: "",
+                    summary: "비공개 채팅 솔루션(주식)",
+                    details: [],
+                    techs: ["Node"]
+                },
+                {
+                    id: "proj-6",
+                    category: "(주) 케이비드",
+                    title: "반반 백엔드 API 작업",
+                    period: "",
+                    summary: "소개팅 및 모임 앱",
+                    details: [],
+                    techs: ["Node"]
+                },
+                {
+                    id: "proj-7",
+                    category: "(주) 케이비드",
+                    title: "나스테크",
+                    period: "",
+                    summary: "자동차 생산 ERP 프로그램",
+                    details: [],
+                    techs: ["C#", "Mysql", "DevExpress", "Spread.net"]
+                },
+                {
+                    id: "proj-8",
+                    category: "(주) 케이비드",
+                    title: "LVMC",
+                    period: "",
+                    summary: "딜러 차량 인도 프로그램",
+                    details: [],
+                    techs: ["React", "AWS", "Mysql"]
+                }
+            ],
+            companyActivities: [
+                {
+                    company: "(주) 케이비드",
+                    position: "C#, MySql, Visual Code, AWS, AI",
+                    period: "2020.08 ~ 현재 (재직 중)",
+                    badge: "Current",
+                    description: "정비/판매 솔루션 프로그램",
+                    activities: [
+                        "Visual Studio C#, MySql 활용 솔루션 프로그램 개발",
+                        "DevExpress Tool을 활용하여 UI 설계",
+                        "Visual Code, MySql, AWS 서버 활용 API 작업"
+                    ]
+                },
+                {
+                    company: "남경소프트",
+                    position: "C#, MySql",
+                    period: "2019.05 ~ 2020.02",
+                    badge: "Full-time",
+                    description: "솔루션 프로그램",
+                    activities: [
+                        "Visual Studio C#, MySql로 솔루션 프로그램 개발"
+                    ]
+                },
+                {
+                    company: "뉴원소프트",
+                    position: "Android Studio",
+                    period: "2019.02 ~ 2019.04",
+                    badge: "Full-time",
+                    description: "얼굴 인식 프로그램",
+                    activities: [
+                        "Android Studio와 OpenCV 기술을 활용하여 개발",
+                        "프로그램까지는 안나왔지만 OpenCV 기술에 대해 공부를 많이 하였습니다."
+                    ]
+                },
+                {
+                    company: "(주) 뉴빌텍",
+                    position: "C, Arduino",
+                    period: "2018.09 ~ 2018.12",
+                    badge: "Full-time",
+                    description: "IOT 개발 및 유지보수",
+                    activities: [
+                        "C언어와 아두이노 키트를 활용하여 무선통신 IOT 개발"
+                    ]
+                },
+                {
+                    company: "(주) 보람정보시스템",
+                    position: "Visual Basic, Oracle 8i, Oracle 11g",
+                    period: "2015.08 ~ 2017.10",
+                    badge: "Full-time",
+                    description: "철강 ERP 프로그램",
+                    activities: [
+                        "Visual Basic 6.0과 Oracle 8i 및 Oracle 11g 활용해서 Steelone이라는 철강 ERP 프로그램을 개발"
+                    ]
+                }
+            ],
+            certifications: [
+                {
+                    name: "정보기술자격(ITQ)",
+                    date: "2008.06.13"
+                },
+                {
+                    name: "정보기기운용기능사",
+                    date: "2008.07.21"
+                },
+                {
+                    name: "워드프로세서1급",
+                    date: "2008.10.10"
+                },
+                {
+                    name: "자동차운전면허 2종 보통",
+                    date: "2013.08.21"
+                },
+                {
+                    name: "정보처리산업기사",
+                    date: "2013.08.21"
+                },
+                {
+                    name: "PC정비사2급",
+                    date: "2013.09.10"
+                }
+            ],
+            education: [
+                {
+                    school: "안동과학대학교 컴퓨터정보과",
+                    period: "2009.03. ~ 2014.02.",
+                    degree: "(전문학사 졸업)"
+                },
+                {
+                    school: "학점은행제 - 글로벌이노에듀",
+                    period: "2022.11.09 ~ 2023.02.21",
+                    degree: "(학사 졸업)"
+                }
+            ],
+            documents: [
+                {
+                    id: "doc-graduation",
+                    title: "졸업증명서",
+                    filename: "졸업증명서.pdf",
+                    filePath: "docs/졸업증명서.pdf",
+                    format: "PDF"
+                },
+                {
+                    id: "doc-transcript",
+                    title: "성적증명서",
+                    filename: "성적증명서.pdf",
+                    filePath: "docs/성적증명서.pdf",
+                    format: "PDF"
+                }
+            ]
+        };
+
+        // 클립보드 복사 함수 (iframe 환경 호환)
+        function copyText(text, label) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(`${label} (${text}) 복사 완료!`);
+            } catch (err) {
+                showToast(`복사 실패: 직접 선택해 주세요.`);
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // 토스트 메시지 표시
+        let toastTimer = null;
+        function showToast(msg) {
+            const box = document.getElementById('toast-box');
+            const textEl = document.getElementById('toast-message');
+            textEl.textContent = msg;
+            box.classList.remove('hidden');
+            box.classList.add('flex');
+            if (toastTimer) clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                box.classList.add('hidden');
+                box.classList.remove('flex');
+            }, 2600);
+        }
+
+        // 첨부 문서 미리보기 모달 열기
+        function openDocModal(docId) {
+            const doc = portfolioData.documents.find(d => d.id === docId);
+            if (!doc) return;
+            document.getElementById('modal-doc-title').textContent = doc.title;
+            document.getElementById('modal-doc-meta').textContent = `${doc.filename} · ${doc.size}`;
+            document.getElementById('modal-doc-date').textContent = `Updated: ${doc.updated}`;
+            document.getElementById('modal-doc-desc').textContent = doc.summary;
+
+            const ul = document.getElementById('modal-doc-highlights');
+            ul.innerHTML = doc.highlights.map(item => `<li>${item}</li>`).join('');
+
+            const downloadBtn = document.getElementById('modal-download-btn');
+            downloadBtn.onclick = () => triggerSampleDownload(doc);
+
+            const modal = document.getElementById('doc-modal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeDocModal() {
+            const modal = document.getElementById('doc-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // 실제 브라우저 파일 다운로드 트리거 (샘플 텍스트 문서 생성)
+        function triggerSampleDownload(doc) {
+            const content = [
+                `==========================================================`,
+                `[PORTFOLIO ATTACHMENT] ${doc.title}`,
+                `작성자: ${portfolioData.profile.name} (${portfolioData.profile.engTitle})`,
+                `연락처: ${portfolioData.profile.email} | ${portfolioData.profile.phone}`,
+                `최종 업데이트: ${doc.updated}`,
+                `==========================================================`,
+                ``,
+                `[문서 개요]`,
+                doc.summary,
+                ``,
+                `[주요 수록 내용]`,
+                ...doc.highlights.map((h, i) => `${i + 1}. ${h}`),
+                ``,
+                `----------------------------------------------------------`,
+                `본 파일은 포트폴리오 웹사이트 템플릿에서 생성된 샘플 첨부파일입니다.`
+            ].join('\n');
+
+            const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = doc.filename.replace('.pdf', '_샘플.txt');
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            closeDocModal();
+            showToast(`'${doc.title}' 샘플 파일 다운로드가 시작되었습니다.`);
+        }
+
+        // [필수 구조 1] 메인 화면 공통 생성기: 좌측 프로필 사진 + 우측 이름/이메일/연락처/소셜 링크
+        function renderHeroSection(styleVariant) {
+            const p = portfolioData.profile;
+
+            // 템플릿별 카드 스타일 차별화 (모두 좌측 사진 / 우측 기본정보 필수 구조 엄수)
+            const containerStyles = {
+                'A': 'bg-white border border-brand-sub rounded-3xl p-6 sm:p-10 shadow-sm',
+                'B': 'bg-brand-dark text-white border border-brand-main/40 rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden',
+                'C': 'bg-white border-2 border-brand-dark rounded-2xl p-6 sm:p-10 shadow-[6px_6px_0px_#384959]'
+            }[styleVariant];
+
+            const isDark = styleVariant === 'B';
+            const subTextColor = isDark ? 'text-brand-sub' : 'text-brand-main';
+            const titleColor = isDark ? 'text-white' : 'text-brand-dark';
+            const infoBoxClass = isDark
+                ? 'bg-white/5 border border-white/15 text-white hover:border-brand-sub'
+                : 'bg-brand-light border border-brand-sub/80 text-brand-dark hover:border-brand-accent';
+
+            return `
+                <section id="section-hero" class="${containerStyles}">
+                    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+                        <!-- [필수 좌측 영역] 프로필 사진 -->
+                        <div class="md:col-span-4 flex flex-col items-center">
+                            <div class="relative group">
+                                <div class="w-44 h-44 sm:w-52 sm:h-52 rounded-2xl overflow-hidden border-4 ${isDark ? 'border-brand-sub' : 'border-brand-main'} shadow-lg bg-brand-dark">
+                                    <img
+                                        src="${p.avatar}"
+                                        alt="${p.name} 프로필 사진"
+                                        onerror="this.onerror=null; this.src='${p.fallbackAvatar}';"
+                                        class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- [필수 우측 영역] 이름, 직무, 이메일, 연락처, 주소 등 기본 정보 -->
+                        <div class="md:col-span-8 space-y-5 text-center md:text-left">
+                            <div class="space-y-2">
+                                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-sub text-brand-dark text-xs font-bold tracking-wide uppercase">
+                                    <i data-lucide="terminal" class="w-3.5 h-3.5 text-brand-accent"></i>
+                                    <span>${p.engTitle}</span>
+                                </div>
+                                <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight ${titleColor}">${p.name}</h1>
+                                <p class="text-sm sm:text-base ${subTextColor} leading-relaxed max-w-2xl">${p.tagline}</p>
+                            </div>
+
+                            <!-- 이메일 · 연락처 · 위치 그리드 (클릭 시 복사 지원) -->
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-left">
+                                <button onclick="copyText('${p.email}', '이메일')" class="p-3 rounded-xl ${infoBoxClass} transition flex items-center gap-3 group" title="클릭하여 이메일 복사">
+                                    <div class="w-9 h-9 rounded-lg bg-brand-accent/15 text-brand-accent flex items-center justify-center shrink-0">
+                                        <i data-lucide="mail" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <div class="text-[11px] font-mono ${subTextColor}">EMAIL (클릭 복사)</div>
+                                        <div class="text-xs sm:text-sm font-semibold truncate">${p.email}</div>
+                                    </div>
+                                </button>
+
+                                <button onclick="copyText('${p.phone}', '연락처')" class="p-3 rounded-xl ${infoBoxClass} transition flex items-center gap-3 group" title="클릭하여 연락처 복사">
+                                    <div class="w-9 h-9 rounded-lg bg-brand-accent/15 text-brand-accent flex items-center justify-center shrink-0">
+                                        <i data-lucide="phone" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <div class="text-[11px] font-mono ${subTextColor}">PHONE (클릭 복사)</div>
+                                        <div class="text-xs sm:text-sm font-semibold truncate">${p.phone}</div>
+                                    </div>
+                                </button>
+
+                                <button onclick="copyText('${p.location}', '주소')" class="p-3 rounded-xl ${infoBoxClass} transition flex items-center gap-3 group" title="클릭하여 주소 복사">
+                                    <div class="w-9 h-9 rounded-lg bg-brand-accent/15 text-brand-accent flex items-center justify-center shrink-0">
+                                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                                    </div>
+                                    <div class="min-w-0 flex-1">
+                                        <div class="text-[11px] font-mono ${subTextColor}">주소 (클릭 복사)</div>
+                                        <div class="text-xs sm:text-sm font-semibold truncate">${p.location}</div>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            `;
+        }
+
+        /* ============================================================================
+           에디토리얼 미니멀리스트 (Executive Editorial)
+           - 특징: 정돈된 매거진/이력서 스타일의 고대비 타이포그래피와 넘버링 섹션,
+                  시니어/리드 엔지니어의 신뢰감을 극대화하는 경력 중심 배치
+           ============================================================================ */
+        function renderTemplateC() {
+            return `
+                <div class="template-fade max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+                    <!-- 상단 퀵 앵커 바 -->
+                    <nav class="flex flex-wrap items-center justify-between gap-2 border-y-2 border-brand-dark py-3 text-xs font-mono font-bold text-brand-dark">
+                        <span>INDEX // SUNGYUN KWON PORTFOLIO</span>
+                        <div class="flex flex-wrap gap-4">
+                            <a href="#section-hero" class="hover:text-brand-accent">01.PROFILE</a>
+                            <a href="#section-activities" class="hover:text-brand-accent">02.CAREER</a>
+                            <a href="#section-projects" class="hover:text-brand-accent">03.PROJECTS</a>
+                            <a href="#section-skills" class="hover:text-brand-accent">04.SKILLS</a>
+                            <a href="#section-cert-edu" class="hover:text-brand-accent">05.CREDENTIALS</a>
+                            <a href="#section-docs" class="hover:text-brand-accent">06.ARCHIVES</a>
+                        </div>
+                    </nav>
+
+                    <!-- 01. 메인 화면 (필수 구조: 좌측 프로필 사진, 우측 기본 정보) -->
+                    ${renderHeroSection('C')}
+
+                    <!-- 02. 회사 활동 (시니어 포트폴리오 특화: 경력을 상단에 배치) -->
+                    <section id="section-activities" class="space-y-6">
+                        <div class="flex items-baseline justify-between border-b-2 border-brand-dark pb-2">
+                            <h2 class="text-2xl font-extrabold text-brand-dark tracking-tight">
+                                <span class="font-mono text-brand-accent mr-2">02.</span>회사 활동 및 경력 (Career & Leadership)
+                            </h2>
+                            <span class="font-mono text-xs text-brand-main">2015 — PRESENT</span>
+                        </div>
+
+                        <div class="divide-y divide-brand-sub bg-white border-2 border-brand-dark rounded-2xl overflow-hidden">
+                            ${portfolioData.companyActivities.map(act => `
+                                <div class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-4">
+                                    <div class="md:col-span-4 space-y-1">
+                                        <span class="inline-block px-2.5 py-0.5 rounded bg-brand-sub text-brand-dark font-mono text-xs font-bold">${act.period}</span>
+                                        <h3 class="text-lg font-extrabold text-brand-dark pt-1">${act.company}</h3>
+                                        <p class="text-xs font-bold text-brand-main">${act.position}</p>
+                                    </div>
+                                    <div class="md:col-span-8 space-y-3">
+                                        <p class="text-sm font-semibold text-brand-dark">${act.description}</p>
+                                        <ul class="space-y-1.5 text-xs sm:text-sm text-brand-dark/90">
+                                            ${act.activities.map(item => `
+                                                <li class="flex items-start gap-2">
+                                                    <span class="font-mono text-brand-accent font-bold">→</span>
+                                                    <span>${item}</span>
+                                                </li>
+                                            `).join('')}
+                                        </ul>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- 03. 주요 프로젝트 -->
+                    <section id="section-projects" class="space-y-6">
+                        <div class="flex items-baseline justify-between border-b-2 border-brand-dark pb-2">
+                            <h2 class="text-2xl font-extrabold text-brand-dark tracking-tight">
+                                <span class="font-mono text-brand-accent mr-2">03.</span>주요 프로젝트 (Selected Works)
+                            </h2>
+                            <span class="font-mono text-xs text-brand-main">8 KEY PROJECTS</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            ${portfolioData.projects.map((proj, idx) => `
+                                <article class="bg-white border-2 border-brand-dark rounded-2xl p-6 flex flex-col justify-between space-y-5 shadow-[4px_4px_0px_#BDDDFC]">
+                                    <div class="space-y-3">
+                                        <div class="flex items-center justify-between border-b border-brand-sub pb-2.5">
+                                            <span class="font-mono text-xs font-bold text-brand-accent">PROJECT 0${idx + 1} // ${proj.category}</span>
+                                            ${proj.period ? `<span class="font-mono text-xs text-brand-main">${proj.period}</span>` : ''}
+                                        </div>
+                                        <h3 class="text-lg font-extrabold text-brand-dark">${proj.title}</h3>
+                                        <p class="text-sm font-semibold text-brand-dark/90 leading-relaxed">${proj.summary}</p>
+                                        ${proj.details && proj.details.length > 0 ? `
+                                            <ul class="space-y-1 text-xs sm:text-sm text-brand-main font-medium">
+                                                ${proj.details.map(d => `
+                                                    <li class="flex items-start gap-1.5">
+                                                        <span class="font-mono text-brand-accent font-bold">-</span>
+                                                        <span>${d}</span>
+                                                    </li>
+                                                `).join('')}
+                                            </ul>
+                                        ` : ''}
+                                    </div>
+                                    <div class="pt-2 border-t border-brand-sub/60">
+                                        <div class="flex flex-wrap gap-1.5">
+                                            ${proj.techs.map(t => `<span class="px-2.5 py-0.5 rounded border border-brand-main text-brand-dark font-mono text-[11px] font-semibold">${t}</span>`).join('')}
+                                        </div>
+                                    </div>
+                                </article>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- 04. 기술 스택 -->
+                    <section id="section-skills" class="space-y-6">
+                        <div class="flex items-baseline justify-between border-b-2 border-brand-dark pb-2">
+                            <h2 class="text-2xl font-extrabold text-brand-dark tracking-tight">
+                                <span class="font-mono text-brand-accent mr-2">04.</span>기술 스택 (TechnicalProficiency)
+                            </h2>
+                            <span class="font-mono text-xs text-brand-main">CATEGORIZED SKILLS</span>
+                        </div>
+
+                        <div class="bg-white border-2 border-brand-dark rounded-2xl divide-y divide-brand-sub">
+                            ${portfolioData.skills.map(cat => `
+                                <div class="p-6 grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
+                                    <div class="md:col-span-4">
+                                        <h3 class="font-extrabold text-base text-brand-dark flex items-center gap-2">
+                                            <i data-lucide="${cat.icon}" class="w-4 h-4 text-brand-accent"></i>
+                                            <span>${cat.category}</span>
+                                        </h3>
+                                    </div>
+                                    <div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                        ${cat.items.map(s => `
+                                            <div class="p-3 rounded-xl bg-brand-light border border-brand-sub flex items-center justify-between">
+                                                <div class="text-xs sm:text-sm font-bold text-brand-dark">${s.name}</div>
+                                                <span class="text-sm font-bold text-brand-accent tracking-widest">${s.stars}</span>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+
+                    <!-- 05. 자격증 & 학력 -->
+                    <section id="section-cert-edu" class="space-y-6">
+                        <div class="flex items-baseline justify-between border-b-2 border-brand-dark pb-2">
+                            <h2 class="text-2xl font-extrabold text-brand-dark tracking-tight">
+                                <span class="font-mono text-brand-accent mr-2">05.</span>자격증 및 학력 (Credentials & Education)
+                            </h2>
+                            <span class="font-mono text-xs text-brand-main">VERIFIED RECORDS</span>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div class="bg-white border-2 border-brand-dark rounded-2xl p-6 space-y-4">
+                                <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-brand-main">Licensed Certifications</h3>
+                                <div class="divide-y divide-brand-sub">
+                                    ${portfolioData.certifications.map(c => `
+                                        <div class="py-3 first:pt-0 last:pb-0 flex items-center justify-between gap-2">
+                                            <div class="text-sm font-bold text-brand-dark">${c.name}</div>
+                                            <span class="font-mono text-xs font-bold px-2.5 py-1 rounded bg-brand-sub text-brand-dark">${c.date}</span>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+
+                            <div class="bg-white border-2 border-brand-dark rounded-2xl p-6 space-y-4">
+                                <h3 class="font-mono text-xs font-bold uppercase tracking-wider text-brand-main">Academic Background</h3>
+                                <div class="divide-y divide-brand-sub">
+                                    ${portfolioData.education.map(e => `
+                                        <div class="py-3 first:pt-0 last:pb-0 space-y-1">
+                                            <div class="text-sm font-bold text-brand-dark">${e.school}</div>
+                                            <div class="font-mono text-xs text-brand-main">${e.period} <span class="font-sans font-bold text-brand-accent">${e.degree}</span></div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- 06. 문서 첨부 파일 -->
+                    <section id="section-docs" class="space-y-6">
+                        <div class="flex items-baseline justify-between border-b-2 border-brand-dark pb-2">
+                            <h2 class="text-2xl font-extrabold text-brand-dark tracking-tight">
+                                <span class="font-mono text-brand-accent mr-2">06.</span>문서 첨부 파일 (Official Dossier & Resume)
+                            </h2>
+                            <span class="font-mono text-xs text-brand-main">DIRECT DOWNLOAD</span>
+                        </div>
+
+                        <div class="bg-brand-dark text-white rounded-2xl p-6 sm:p-8 divide-y divide-white/15">
+                            ${portfolioData.documents.map(doc => `
+                                <div class="py-4 first:pt-0 last:pb-0 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                    <div class="flex items-center gap-3">
+                                        <span class="px-2 py-0.5 rounded bg-brand-sub text-brand-dark font-mono text-xs font-bold">${doc.format}</span>
+                                        <h3 class="font-bold text-base text-white">${doc.title}</h3>
+                                        <span class="text-xs font-mono text-brand-sub">${doc.filename}</span>
+                                    </div>
+                                    <a href="${doc.filePath}" download="${doc.filename}" class="shrink-0 px-4 py-2.5 rounded-xl bg-brand-accent text-white text-xs font-bold flex items-center justify-center gap-2 hover:opacity-90 transition">
+                                        <i data-lucide="download" class="w-4 h-4"></i>
+                                        <span>다운로드</span>
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function renderCurrentTemplate() {
+            const viewport = document.getElementById('template-viewport');
+            viewport.innerHTML = renderTemplateC();
+            lucide.createIcons();
+        }
+
+        // 초기 실행
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCurrentTemplate();
+        });
+    </script>
+
+    <!-- 하단 공통 푸터 -->
+    <footer class="bg-brand-dark text-white/80 border-t border-white/10 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-brand-accent"></span>
+                <span class="font-semibold text-white">권성윤 (Sungyun Kwon) — Developer Portfolio</span>
+            </div>
+            <div class="flex items-center gap-4 font-mono text-[11px] text-brand-sub">
+                <span>#6A89A7</span>
+                <span>#BDDDFC</span>
+                <span>#888DF2</span>
+                <span>#384959</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

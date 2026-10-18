@@ -1,0 +1,343 @@
+{
+  "schema": 1,
+  "owner": "b0a76448-e0df-4486-8a07-13d80025d103",
+  "phase": "implement",
+  "cycle": 0,
+  "nudges": 0,
+  "locks": {},
+  "issues": [],
+  "batch": [],
+  "reviews": {
+    "index.html:1": {
+      "agent": "oma-reviewer",
+      "section": "index.html:1",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Verified index.html lines 1-120: the sticky top header panel (<header>) has been completely removed before <main id=\"template-viewport\">, the page title and viewport comment reflect Editorial Minimal only, and the document modal UI structure (lines 85-120) is preserved without regression. Validator check-editorial passed (exitCode 0).",
+      "findings": [],
+      "reviewerConversationId": "d08afc93-72aa-4a0e-9396-30720c1eaf2c",
+      "receivedAt": "2026-10-18T12:05:27.772Z"
+    },
+    "index.html:601": {
+      "agent": "oma-reviewer",
+      "section": "index.html:601",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Verified index.html lines 601-720 contain the Editorial Minimal (Template C) sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and the start of 05 (Credentials & Education) with no top panel present, corroborated by passing check-editorial evidence.",
+      "findings": [],
+      "reviewerConversationId": "d723a027-b118-4e9b-aaa2-7ab5bfae119c",
+      "receivedAt": "2026-10-18T12:05:31.549Z"
+    },
+    "index.html:721": {
+      "agent": "oma-reviewer",
+      "section": "index.html:721",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Reviewed index.html lines 721-810 against hash 17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094 and verified check-editorial (exitCode 0). Template C sections 05 (Credentials & Education) and 06 (Official Dossier & Resume) close cleanly, renderCurrentTemplate() exclusively renders renderTemplateC() into #template-viewport without any template switcher state or top-panel DOM updates, and the footer and document root close properly.",
+      "findings": [],
+      "reviewerConversationId": "f5dfc094-3955-4315-8b82-7fb6dc5f077c",
+      "receivedAt": "2026-10-18T12:05:32.159Z"
+    },
+    "index.html:241": {
+      "agent": "oma-reviewer",
+      "section": "index.html:241",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Reviewed index.html lines 241-360 containing portfolioData arrays (companyActivities, certifications, education, and documents) preserved for Editorial Minimal (Template C) rendering, verified alongside check-editorial pass evidence.",
+      "findings": [],
+      "reviewerConversationId": "a3998519-0b9b-462c-93d1-aa366e03aefc",
+      "receivedAt": "2026-10-18T12:05:32.423Z"
+    },
+    "index.html:481": {
+      "agent": "oma-reviewer",
+      "section": "index.html:481",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Reviewed index.html lines 481-600. renderHeroSection completes cleanly and transitions directly into renderTemplateC() (Editorial Minimal) without Template A or B render functions. renderTemplateC() preserves the quick anchor navigation, renderHeroSection('C'), and section-activities header. Validator check-editorial passed with verified integrity.",
+      "findings": [],
+      "reviewerConversationId": "378bc6c3-7152-41f4-b6d7-df41f1acf585",
+      "receivedAt": "2026-10-18T12:05:40.848Z"
+    },
+    "index.html:121": {
+      "agent": "oma-reviewer",
+      "section": "index.html:121",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Reviewed index.html lines 121-240 containing the closing modal tags, #toast-box notification element, and the portfolioData object definition (profile, skills, projects). All data and toast markup are preserved intact without any top panel markup or non-editorial template bloat; check-editorial validator passed.",
+      "findings": [],
+      "reviewerConversationId": "8f140a96-1e26-4d28-92c7-a44edcc6e724",
+      "receivedAt": "2026-10-18T12:05:41.868Z"
+    },
+    "index.html:361": {
+      "agent": "oma-reviewer",
+      "section": "index.html:361",
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "verdict": "pass",
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "evidence": "Reviewed index.html lines 361-480 and verified that modal/toast/clipboard helpers and renderHeroSection are preserved cleanly without any top header panel or Template A/B renderer functions, backed by passing check-editorial validator evidence.",
+      "findings": [],
+      "reviewerConversationId": "ff138121-15a5-4734-ba9d-8db9a238aa39",
+      "receivedAt": "2026-10-18T12:05:43.854Z"
+    }
+  },
+  "updatedAt": "2026-10-18T12:05:43.856Z",
+  "revision": 39,
+  "handoff": {
+    "agent": "oma-doc-reader",
+    "summary": "The portfolio workspace contains a single file, index.html (1,395 lines), using Tailwind CSS CDN and Lucide icons. The sticky top panel (<header>, lines 80-115) renders the brand indicator and 3 template switcher buttons (tab-btn-A/B/C) managed by switchTemplate() and renderCurrentTemplate() (lines 1347-1376) with default currentTemplate = 'A' (line 412). Template C ('3. 에디토리얼 미니멀') is defined in renderTemplateC() (lines 1133-1344) and relies on shared portfolioData (lines 171-410), renderHeroSection('C') (lines 506-611), modal/toast helpers (lines 416-503), and an internal Template 03 intro banner (lines 1136-1143) plus anchor nav bar (lines 1145-1156).",
+    "sources": [
+      "index.html"
+    ],
+    "unknowns": []
+  },
+  "brief": {
+    "objective": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+    "risk": "routine",
+    "constraints": [
+      "Preserve all Template C sections (01.PROFILE through 06.ARCHIVES), hero section, modal/toast helpers, and footer",
+      "Remove the sticky top template selector panel (<header>)"
+    ],
+    "nonGoals": [
+      "Do not alter portfolioData content or brand color palette"
+    ],
+    "decisions": [
+      {
+        "id": "template-selection",
+        "question": "Which template should be displayed and what should happen to the top panel?",
+        "owner": "user",
+        "status": "resolved",
+        "answer": "Display only Template C (3. 에디토리얼 미니멀) and delete the top template selector panel (<header>)",
+        "basis": "Explicit user request: '3. 에디토리얼 미니멀 으로만 보일 수 있게 하고 상단 패널 삭제해주세요.'"
+      }
+    ],
+    "conflicts": []
+  },
+  "designSealed": true,
+  "tickets": {
+    "section:index.html:1": {
+      "token": "04653de4-781b-4171-9c95-d6d97cd0182d",
+      "kind": "section",
+      "target": "index.html:1",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "d08afc93-72aa-4a0e-9396-30720c1eaf2c",
+      "receiptHash": "fe52fec0d998b0ac9938e8893c004b4baa6a5e758ec9cab210039fc16ee76b5a"
+    },
+    "section:index.html:121": {
+      "token": "7e76f620-5b45-4476-8f2a-93f794ce8281",
+      "kind": "section",
+      "target": "index.html:121",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "8f140a96-1e26-4d28-92c7-a44edcc6e724",
+      "receiptHash": "9c731f6ae716d6e1233b0062dc7561d402d4cebe5785c6befee142b385cafcdc"
+    },
+    "section:index.html:241": {
+      "token": "07e4d07e-358d-42e9-af01-d03298a4619a",
+      "kind": "section",
+      "target": "index.html:241",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "a3998519-0b9b-462c-93d1-aa366e03aefc",
+      "receiptHash": "c1b88e85000286f82646870748ab75a10804923e25cff2e23045e68511ab9a59"
+    },
+    "section:index.html:361": {
+      "token": "243a3a84-439c-4e70-b168-729c2a6c3cb4",
+      "kind": "section",
+      "target": "index.html:361",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "ff138121-15a5-4734-ba9d-8db9a238aa39",
+      "receiptHash": "92b9beed8b8ef79629d64de27ae6cb7316df7e98fcebe0587c54d89e7ee724e7"
+    },
+    "section:index.html:481": {
+      "token": "5d47d9a6-a5d2-422a-ad3c-488a7b6c4457",
+      "kind": "section",
+      "target": "index.html:481",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "378bc6c3-7152-41f4-b6d7-df41f1acf585",
+      "receiptHash": "02aed6fe3804348689c2b4c4588a1c2fac6a3c10dc24465b4fa10d5fdc0ce21b"
+    },
+    "section:index.html:601": {
+      "token": "d3c0b97d-c146-48cc-9419-8838fc44ab05",
+      "kind": "section",
+      "target": "index.html:601",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "d723a027-b118-4e9b-aaa2-7ab5bfae119c",
+      "receiptHash": "5a90eb518434a176c566127a654bce7e08aad90ae7dff8118c47bcba759a4111"
+    },
+    "section:index.html:721": {
+      "token": "32a99ffe-198d-4b45-be37-c61fb97944e2",
+      "kind": "section",
+      "target": "index.html:721",
+      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "used": true,
+      "actor": "f5dfc094-3955-4315-8b82-7fb6dc5f077c",
+      "receiptHash": "fab38c79c7952ce9fec0d52e79cddf17c64d3c09f18c5570812ec2835599d0a9"
+    }
+  },
+  "plan": {
+    "intent": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+    "criteria": [
+      "remove-top-panel",
+      "editorial-minimal-only"
+    ],
+    "files": [
+      "index.html"
+    ],
+    "testFiles": [],
+    "checks": [
+      {
+        "id": "check-editorial",
+        "argv": [
+          "node",
+          ".omg/drafts/check-editorial.mjs"
+        ],
+        "files": [
+          "index.html"
+        ],
+        "criteria": [
+          "remove-top-panel",
+          "editorial-minimal-only"
+        ]
+      }
+    ]
+  },
+  "care": {
+    "risk": "routine",
+    "sectionLines": 120,
+    "batchSize": 3,
+    "cycles": 6,
+    "reasons": []
+  },
+  "planHash": "134f1ad211a4cea42d615fa80ef50293d0d4503ff5ea5d32b0c74a9aee135620",
+  "planBasis": {
+    "index.html": "4482d4b0364666f31aec01697bcb9a29621102aca9712eeb7f701d554cf61e93"
+  },
+  "receiptMode": "native",
+  "checkpoint": {
+    "id": "1daeb9f8-4acc-4a26-9e67-d60033370244",
+    "path": ".omg/state/checkpoints/1daeb9f8-4acc-4a26-9e67-d60033370244.json",
+    "hash": "1edfc71d83d715b89fbcbd95032f0e8ebf41629b0f38dd148b176770c8b4da48",
+    "revision": 25,
+    "reason": "verify"
+  },
+  "planReview": {
+    "agent": "oma-design-auditor",
+    "planHash": "134f1ad211a4cea42d615fa80ef50293d0d4503ff5ea5d32b0c74a9aee135620",
+    "verdict": "pass",
+    "criteria": [
+      "remove-top-panel",
+      "editorial-minimal-only"
+    ],
+    "evidence": "Verified plan packet against index.html and .omg/drafts/check-editorial.mjs. The objective, constraints (preserving Template C sections 01.PROFILE through 06.ARCHIVES, hero section, modal/toast helpers, footer, and brand palette while deleting <header>), and resolved decision are directly enforced by check-editorial.mjs, which validates both static removal of <header> and multi-template switcher code and runtime DOM rendering of Template C in a node:vm sandbox.",
+    "findings": [],
+    "reviewerConversationId": "5cd5bbae-eaa1-47e6-9df9-dc2fc212fea9",
+    "receivedAt": "2026-10-18T11:47:50.163Z"
+  },
+  "checks": [
+    {
+      "id": "check-editorial",
+      "files": [
+        "index.html"
+      ],
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ],
+      "argv": [
+        "node",
+        ".omg/drafts/check-editorial.mjs"
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "status": "pass",
+      "evidence": ".omg/evidence/a4eab19f-4435-4f28-bc61-cd09699bdcc5.txt",
+      "evidenceHash": "63a33c0153c3dd8d6fca673c2a5051d7e84acef52f712f6b006926252fa26360",
+      "at": "2026-10-18T12:04:55.236Z"
+    }
+  ],
+  "hashes": {
+    "index.html": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+  },
+  "sections": [
+    {
+      "id": "index.html:1",
+      "file": "index.html",
+      "start": 1,
+      "end": 120,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    },
+    {
+      "id": "index.html:121",
+      "file": "index.html",
+      "start": 121,
+      "end": 240,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    },
+    {
+      "id": "index.html:241",
+      "file": "index.html",
+      "start": 241,
+      "end": 360,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    },
+    {
+      "id": "index.html:361",
+      "file": "index.html",
+      "start": 361,
+      "end": 480,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    },
+    {
+      "id": "index.html:481",
+      "file": "index.html",
+      "start": 481,
+      "end": 600,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    },
+    {
+      "id": "index.html:601",
+      "file": "index.html",
+      "start": 601,
+      "end": 720,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    },
+    {
+      "id": "index.html:721",
+      "file": "index.html",
+      "start": 721,
+      "end": 810,
+      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    }
+  ]
+}

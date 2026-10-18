@@ -1,0 +1,27 @@
+{
+  "intent": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+  "criteria": [
+    "remove-top-panel",
+    "editorial-minimal-only"
+  ],
+  "files": [
+    "index.html"
+  ],
+  "testFiles": [],
+  "checks": [
+    {
+      "id": "check-editorial",
+      "argv": [
+        "node",
+        ".omg/drafts/check-editorial.mjs"
+      ],
+      "files": [
+        "index.html"
+      ],
+      "criteria": [
+        "remove-top-panel",
+        "editorial-minimal-only"
+      ]
+    }
+  ]
+}
