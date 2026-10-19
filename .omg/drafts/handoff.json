@@ -1,16 +1,11 @@
 {
   "agent": "oma-doc-reader",
-  "summary": "Read package.json (React 19.1.0, Vite 6.4.4, TypeScript 5.8.3, lucide-react 0.511.0, vite-plugin-singlefile 2.3.4), vite.config.ts, index.html, src/data/portfolio.ts, src/components/EditorialTemplate.tsx, and src/App.tsx. Mapped Sections 02 (companyActivities -> data/Career.json), 03 (projects -> data/Works.json), 04 (skills with string-to-LucideIcon mapping -> data/TechnicalProficiency.json), and 05 (certifications + education -> data/Credentials.json), and noted viteSingleFile/file:// constraints.",
+  "summary": "Reviewed src/App.tsx, src/data/portfolio.ts, src/components/EditorialTemplate.tsx, and src/components/DocModal.tsx. Section 06 (Official Dossier & Resume) renders portfolioData.documents and invokes onOpenDoc(doc.id), which opens DocModal to validate env.filePassword via checkPassword before triggering an anchor download for doc.filePath (relative to public/, so public/docs/학위증명서.pdf resolves at docs/학위증명서.pdf) with doc.filename ('학위증명서.pdf').",
   "sources": [
-    "package.json",
-    "vite.config.ts",
-    "index.html",
+    "src/App.tsx",
     "src/data/portfolio.ts",
     "src/components/EditorialTemplate.tsx",
-    "src/App.tsx"
+    "src/components/DocModal.tsx"
   ],
-  "unknowns": [
-    "Exact filesystem placement of data/*.json and runtime fetch vs Vite import/HMR mechanism.",
-    "Whether Section 03 heading meta should dynamically reflect Works.json item count."
-  ]
+  "unknowns": []
 }

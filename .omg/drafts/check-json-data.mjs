@@ -73,13 +73,17 @@ const tsconfig = readJson('tsconfig.json');
 assert.equal(tsconfig.compilerOptions?.resolveJsonModule, true, 'tsconfig.json must enable resolveJsonModule');
 assert.ok(Array.isArray(tsconfig.include) && tsconfig.include.includes('data'), 'tsconfig.json include must contain "data"');
 
-// 6. Validate src/data/portfolio.ts imports all 4 JSON files and maps dynamic data
+// 6. Validate src/data/portfolio.ts imports all 4 JSON files, maps dynamic data, and registers 학위증명서(학점은행제)
 const portfolioTs = fs.readFileSync(path.join(root, 'src/data/portfolio.ts'), 'utf8');
 assert.ok(portfolioTs.includes('data/Career.json'), 'src/data/portfolio.ts must import data/Career.json');
 assert.ok(portfolioTs.includes('data/Works.json'), 'src/data/portfolio.ts must import data/Works.json');
 assert.ok(portfolioTs.includes('data/TechnicalProficiency.json'), 'src/data/portfolio.ts must import data/TechnicalProficiency.json');
 assert.ok(portfolioTs.includes('data/Credentials.json'), 'src/data/portfolio.ts must import data/Credentials.json');
 assert.ok(portfolioTs.includes('usePortfolioData'), 'src/data/portfolio.ts must export usePortfolioData for dynamic updates');
+assert.ok(portfolioTs.includes('doc-degree'), 'src/data/portfolio.ts must register id "doc-degree"');
+assert.ok(portfolioTs.includes('학위증명서(학점은행제)'), 'src/data/portfolio.ts must register title "학위증명서(학점은행제)"');
+assert.ok(portfolioTs.includes('학위증명서.pdf'), 'src/data/portfolio.ts must register filename "학위증명서.pdf"');
+assert.ok(portfolioTs.includes('docs/학위증명서.pdf'), 'src/data/portfolio.ts must register filePath "docs/학위증명서.pdf"');
 
 // 7. Validate src/components/EditorialTemplate.tsx uses dynamic portfolio data
 const editorialTsx = fs.readFileSync(path.join(root, 'src/components/EditorialTemplate.tsx'), 'utf8');
@@ -92,4 +96,4 @@ if (fs.existsSync(tscPath)) {
   assert.equal(tsc.status, 0, `TypeScript check failed:\n${tsc.stdout}\n${tsc.stderr}`);
 }
 
-console.log('All JSON data, dynamic hook, and TypeScript checks passed.');
+console.log('All JSON data, degree certificate document, dynamic hook, and TypeScript checks passed.');

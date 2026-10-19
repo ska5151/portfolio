@@ -1,40 +1,26 @@
 {
-  "intent": "Load portfolio sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and 05 (Credentials & Education) from data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json populated with current webpage data and dynamically reflected on edit",
+  "intent": "Add 학위증명서(학점은행제) to Section 06 document attachments with password-protected download from public/docs/학위증명서.pdf (docs/학위증명서.pdf)",
   "criteria": [
-    "populate-json-files",
-    "load-sections-from-json",
-    "dynamic-json-updates"
+    "degree-doc-registered",
+    "password-modal-download"
   ],
   "files": [
-    "data/Career.json",
-    "data/Works.json",
-    "data/TechnicalProficiency.json",
-    "data/Credentials.json",
-    "tsconfig.json",
-    "src/data/portfolio.ts",
-    "src/components/EditorialTemplate.tsx"
+    "src/App.tsx"
   ],
   "testFiles": [],
   "checks": [
     {
-      "id": "check-json-data",
+      "id": "check-degree-doc",
       "argv": [
         "node",
-        ".omg/drafts/check-json-data.mjs"
+        ".omg/drafts/check-degree-doc.mjs"
       ],
       "files": [
-        "data/Career.json",
-        "data/Works.json",
-        "data/TechnicalProficiency.json",
-        "data/Credentials.json",
-        "tsconfig.json",
-        "src/data/portfolio.ts",
-        "src/components/EditorialTemplate.tsx"
+        "src/App.tsx"
       ],
       "criteria": [
-        "populate-json-files",
-        "load-sections-from-json",
-        "dynamic-json-updates"
+        "degree-doc-registered",
+        "password-modal-download"
       ]
     }
   ]

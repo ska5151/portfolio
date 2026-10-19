@@ -1,39 +1,22 @@
 {
-  "objective": "Load portfolio sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and 05 (Credentials & Education) from data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json populated with current webpage data and dynamically reflected on edit",
+  "objective": "Add 학위증명서(학점은행제) to Section 06 document attachments with password-protected download from public/docs/학위증명서.pdf (docs/학위증명서.pdf)",
   "risk": "routine",
   "constraints": [
-    "Populate data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json with the exact current webpage data from src/data/portfolio.ts",
-    "Ensure JSON edits dynamically update the rendered webpage via Vite HMR and runtime fetch fallback while preserving file:// compatibility",
-    "Maintain TypeScript type safety (tsc --noEmit) and existing EditorialTemplate visual structure"
+    "Display 학위증명서(학점은행제) in Section 06 alongside 졸업증명서 and 성적증명서",
+    "Require the same DocModal file password verification before downloading",
+    "Use relative path docs/학위증명서.pdf corresponding to public/docs/학위증명서.pdf for both HTTP and file:// compatibility"
   ],
   "nonGoals": [
-    "Do not externalize Section 01 (Profile) or Section 06 (Archives/Documents) to JSON files",
-    "Do not alter authentication or modal download flows"
+    "Do not change password verification logic in DocModal.tsx or env.ts"
   ],
   "decisions": [
     {
-      "id": "json-paths",
+      "id": "degree-doc-entry",
       "owner": "user",
       "status": "resolved",
-      "question": "Which JSON file paths correspond to sections 02 through 05?",
-      "answer": "data/Career.json (02), data/Works.json (03), data/TechnicalProficiency.json (04), data/Credentials.json (05)",
-      "basis": "Explicitly specified in the user request and already present as empty files under data/"
-    },
-    {
-      "id": "dynamic-loading-mechanism",
-      "owner": "agent",
-      "status": "resolved",
-      "question": "How should JSON files be loaded so edits dynamically reflect on the webpage while keeping single-file/file:// compatibility?",
-      "answer": "Import data/*.json in src/data/portfolio.ts for bundled/HMR reactivity and provide usePortfolioData() with runtime fetch refresh when served over HTTP(S)",
-      "basis": "Vite natively hot-reloads imported JSON files during dev/build, and runtime fetch over HTTP(S) refreshes edited JSON files dynamically without breaking file:// fallback"
-    },
-    {
-      "id": "skill-icon-mapping",
-      "owner": "agent",
-      "status": "resolved",
-      "question": "How should Lucide icons for Section 04 (TechnicalProficiency) be represented in JSON?",
-      "answer": "Store icon identifier strings ('Layout', 'Server', 'CloudCog') in data/TechnicalProficiency.json and map them to LucideIcon components in src/data/portfolio.ts",
-      "basis": "JSON cannot serialize function references; string-to-icon mapping preserves the exact Layout, Server, and CloudCog icons"
+      "question": "What title, filename, and download path should be used for the new document attachment?",
+      "answer": "title: '학위증명서(학점은행제)', filename: '학위증명서.pdf', filePath: 'docs/학위증명서.pdf', format: 'PDF'",
+      "basis": "Explicitly specified in user request (학위증명서(학점은행제), public\\docs\\학위증명서.pdf)"
     }
   ],
   "conflicts": []

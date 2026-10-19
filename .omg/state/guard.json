@@ -8,50 +8,20 @@
   "issues": [],
   "batch": [],
   "reviews": {
-    "data/Works.json:1": {
+    "src/data/portfolio.ts:121": {
       "agent": "oma-reviewer",
-      "section": "data/Works.json:1",
-      "hash": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
+      "section": "src/data/portfolio.ts:121",
+      "hash": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26",
       "verdict": "pass",
       "criteria": [
         "populate-json-files",
         "load-sections-from-json",
         "dynamic-json-updates"
       ],
-      "evidence": "data/Works.json lines 1-75 contain a valid JSON array of 8 project records (proj-1 through proj-8) conforming to the Project interface (id, category, title, period, summary, details, techs), imported statically and fetched dynamically in src/data/portfolio.ts, and verified by check-json-data.",
+      "evidence": "Reviewed src/data/portfolio.ts lines 121-203 against the supplied criteria and validator evidence (.omg/evidence/3b82932c-b58a-47fc-90d3-620319eb1215.txt). usePortfolioData() initializes and synchronizes state from the bundled JSON files (Career.json, Works.json, TechnicalProficiency.json, Credentials.json) via mapSkillCategories and typed casts, skips runtime fetch safely when running on file://, and fetches cache-busted JSON updates on mount and window focus with defensive array checks and cleanup.",
       "findings": [],
-      "reviewerConversationId": "14a8448e-1946-4caf-9ebd-c84ec34680a7",
-      "receivedAt": "2026-10-19T11:11:21.885Z"
-    },
-    "src/data/portfolio.ts:1": {
-      "agent": "oma-reviewer",
-      "section": "src/data/portfolio.ts:1",
-      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
-      "verdict": "pass",
-      "criteria": [
-        "populate-json-files",
-        "load-sections-from-json",
-        "dynamic-json-updates"
-      ],
-      "evidence": "Reviewed src/data/portfolio.ts lines 1-120 against the acceptance criteria and check-json-data validator output. The file imports data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json, defines clean TypeScript interfaces (SkillCategory, RawSkillCategory, Project, CompanyActivity, CertificationRecord, EducationRecord, CredentialsData, PortfolioDocument), maps icon string identifiers (Layout, Server, CloudCog) to LucideIcon components via mapSkillCategories, and initializes portfolioData.skills, projects, companyActivities, certifications, and education directly from those JSON imports while preserving profile and document definitions.",
-      "findings": [],
-      "reviewerConversationId": "bd6b3b56-9a69-449e-a9ac-44e5e27399b1",
-      "receivedAt": "2026-10-19T11:11:32.184Z"
-    },
-    "data/Career.json:1": {
-      "agent": "oma-reviewer",
-      "section": "data/Career.json:1",
-      "hash": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
-      "verdict": "pass",
-      "criteria": [
-        "populate-json-files",
-        "load-sections-from-json",
-        "dynamic-json-updates"
-      ],
-      "evidence": "data/Career.json lines 1-56 define a valid JSON array of 5 CompanyActivity items matching the webpage career section schema, imported statically and fetched dynamically in src/data/portfolio.ts, and verified by check-json-data.",
-      "findings": [],
-      "reviewerConversationId": "1c9b5766-456d-4d00-b438-78bb79f9ba5a",
-      "receivedAt": "2026-10-19T11:11:32.284Z"
+      "reviewerConversationId": "dbe746bd-91d3-443b-b3f1-bdd811a1c347",
+      "receivedAt": "2026-10-19T11:27:21.428Z"
     },
     "data/Credentials.json:1": {
       "agent": "oma-reviewer",
@@ -63,40 +33,10 @@
         "load-sections-from-json",
         "dynamic-json-updates"
       ],
-      "evidence": "Verified data/Credentials.json lines 1-41 contain the exact 6 certification records and 2 education records matching CredentialsData in src/data/portfolio.ts, imported for static/HMR loading and fetched dynamically at runtime, with check-json-data passing (exitCode 0).",
+      "evidence": "Verified data/Credentials.json lines 1-41 contain well-formed JSON with the complete certifications (6 entries) and education (2 entries) arrays matching the CredentialsData schema (CertificationRecord[] and EducationRecord[]) consumed by src/data/portfolio.ts via both static import and runtime fetch fallback, and confirmed check-json-data passed.",
       "findings": [],
-      "reviewerConversationId": "3f08c288-ce08-4a67-bbdf-43f36b88ee96",
-      "receivedAt": "2026-10-19T11:11:41.949Z"
-    },
-    "data/TechnicalProficiency.json:1": {
-      "agent": "oma-reviewer",
-      "section": "data/TechnicalProficiency.json:1",
-      "hash": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
-      "verdict": "pass",
-      "criteria": [
-        "populate-json-files",
-        "load-sections-from-json",
-        "dynamic-json-updates"
-      ],
-      "evidence": "Verified data/TechnicalProficiency.json lines 1-30 contain the 3 skill categories (Frontend Engineering, Backend & Distributed System, DevOps & Cloud Native) with valid icon identifiers (Layout, Server, CloudCog) and items matching RawSkillCategory[] in src/data/portfolio.ts, imported statically and fetched dynamically via usePortfolioData, and verified by check-json-data.",
-      "findings": [],
-      "reviewerConversationId": "b66cd831-456c-4f94-9f7e-42b8a311c766",
-      "receivedAt": "2026-10-19T11:11:45.127Z"
-    },
-    "tsconfig.json:1": {
-      "agent": "oma-reviewer",
-      "section": "tsconfig.json:1",
-      "hash": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
-      "verdict": "pass",
-      "criteria": [
-        "populate-json-files",
-        "load-sections-from-json",
-        "dynamic-json-updates"
-      ],
-      "evidence": "Lines 14-17 enable resolveJsonModule: true, include vite/client types for import.meta.hot HMR typing, and add data to the included paths alongside src and vite.config.ts. Verified against src/data/portfolio.ts JSON imports and passing check-json-data validator evidence.",
-      "findings": [],
-      "reviewerConversationId": "3b5f245c-165c-4b61-98db-c4f658d0b834",
-      "receivedAt": "2026-10-19T11:11:46.803Z"
+      "reviewerConversationId": "94a22ac8-4c35-4122-a16e-c51783635d43",
+      "receivedAt": "2026-10-19T11:27:22.354Z"
     },
     "src/components/EditorialTemplate.tsx:1": {
       "agent": "oma-reviewer",
@@ -108,25 +48,10 @@
         "load-sections-from-json",
         "dynamic-json-updates"
       ],
-      "evidence": "Verified src/components/EditorialTemplate.tsx lines 1-120 imports usePortfolioData from '../data/portfolio', invokes it at the component top level, and renders sections 02 (companyActivities), 03 (projects), and 04 (skills) from the dynamic hook state without altering the visual layout or TypeScript contracts; check-json-data passed (exitCode 0).",
+      "evidence": "Reviewed src/components/EditorialTemplate.tsx lines 1-120 and traced usePortfolioData in src/data/portfolio.ts. EditorialTemplate consumes usePortfolioData() (lines 2, 16) and renders sections 02 (companyActivities), 03 (projects), and 04 (skills) from the hook data while preserving the visual layout and TypeScript types. Validator check-json-data passed (exitCode 0, verified hash e5a1df64830edcd10ce8ced9f8909c0d622018a5a14c30e30a0184928cae0e8c).",
       "findings": [],
-      "reviewerConversationId": "5c15aa58-1347-48b3-b7e3-181862f4c354",
-      "receivedAt": "2026-10-19T11:11:57.284Z"
-    },
-    "src/data/portfolio.ts:121": {
-      "agent": "oma-reviewer",
-      "section": "src/data/portfolio.ts:121",
-      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
-      "verdict": "pass",
-      "criteria": [
-        "populate-json-files",
-        "load-sections-from-json",
-        "dynamic-json-updates"
-      ],
-      "evidence": "Reviewed src/data/portfolio.ts lines 121-196 against validator evidence check-json-data (exitCode 0). populate-json-files is covered by the imported JSON structures; load-sections-from-json is satisfied by usePortfolioData initializing companyActivities, projects, skills, certifications, and education from the imported JSON modules; dynamic-json-updates is satisfied by the useEffect updating state from bundled JSON and fetching runtime JSON with cache-busting on mount and window focus while safely skipping fetch on file:// protocol.",
-      "findings": [],
-      "reviewerConversationId": "7621bfa4-7fa6-4389-96a6-64c00a162b53",
-      "receivedAt": "2026-10-19T11:12:01.309Z"
+      "reviewerConversationId": "309a0c4b-35d0-4a79-b1e2-b06ae465bf95",
+      "receivedAt": "2026-10-19T11:27:25.196Z"
     },
     "src/components/EditorialTemplate.tsx:121": {
       "agent": "oma-reviewer",
@@ -138,14 +63,89 @@
         "load-sections-from-json",
         "dynamic-json-updates"
       ],
-      "evidence": "Lines 126-155 render Section 05 (Credentials & Education) using portfolioData.certifications and portfolioData.education supplied by usePortfolioData(), which loads and dynamically updates from data/Credentials.json while preserving Section 06 and existing layout.",
+      "evidence": "Reviewed src/components/EditorialTemplate.tsx lines 121-180 and traced usePortfolioData() from src/data/portfolio.ts. Section 05 (Credentials & Education) and Section 06 (Documents) properly render portfolioData.certifications, portfolioData.education, and portfolioData.documents from the reactive usePortfolioData() hook while preserving all existing markup, styling, and onOpenDoc callback behavior. Validator check-json-data passed (exitCode 0).",
       "findings": [],
-      "reviewerConversationId": "3781d967-a032-491e-8c0d-363a84eddca9",
-      "receivedAt": "2026-10-19T11:12:06.636Z"
+      "reviewerConversationId": "150a43cb-09bc-46a2-9008-c9db4507f31d",
+      "receivedAt": "2026-10-19T11:27:35.222Z"
+    },
+    "tsconfig.json:1": {
+      "agent": "oma-reviewer",
+      "section": "tsconfig.json:1",
+      "hash": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Lines 14-17 enable resolveJsonModule: true, include vite/client types, and add 'data' to the include array alongside 'src' and 'vite.config.ts'. This allows TypeScript to resolve and type-check data/*.json imports and Vite HMR hooks in src/data/portfolio.ts, verified by check-json-data passing with exitCode 0.",
+      "findings": [],
+      "reviewerConversationId": "cb7e46e9-80b9-47ee-ab03-dc6789283b57",
+      "receivedAt": "2026-10-19T11:27:36.558Z"
+    },
+    "data/Works.json:1": {
+      "agent": "oma-reviewer",
+      "section": "data/Works.json:1",
+      "hash": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Verified data/Works.json lines 1-75 contain a valid JSON array of all 8 project records (proj-1 through proj-8) matching the Project interface in src/data/portfolio.ts (id, category, title, period, summary, details, techs), consumed via both static import and runtime fetch in usePortfolioData(), and confirmed check-json-data validator passed (exitCode 0, verified hash e5a1df64830edcd10ce8ced9f8909c0d622018a5a14c30e30a0184928cae0e8c).",
+      "findings": [],
+      "reviewerConversationId": "13ed7d32-dbdd-4a5a-9c85-bc6c2690fab5",
+      "receivedAt": "2026-10-19T11:27:38.818Z"
+    },
+    "data/Career.json:1": {
+      "agent": "oma-reviewer",
+      "section": "data/Career.json:1",
+      "hash": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Lines 1-56 of data/Career.json contain the 5 company activity records matching CompanyActivity in src/data/portfolio.ts, imported statically and fetched dynamically in usePortfolioData, with check-json-data passing (exitCode 0).",
+      "findings": [],
+      "reviewerConversationId": "0db54c15-5638-4fa5-9abc-de5a7fd6c536",
+      "receivedAt": "2026-10-19T11:27:43.189Z"
+    },
+    "data/TechnicalProficiency.json:1": {
+      "agent": "oma-reviewer",
+      "section": "data/TechnicalProficiency.json:1",
+      "hash": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Verified data/TechnicalProficiency.json (lines 1-30) contains the exact 3 skill categories (Frontend Engineering, Backend & Distributed System, DevOps & Cloud Native) with Layout, Server, and CloudCog icons matching RawSkillCategory[] and skillIconMap in src/data/portfolio.ts, and check-json-data passed (exitCode 0).",
+      "findings": [],
+      "reviewerConversationId": "0050179d-2575-47bd-b089-adb2767749f9",
+      "receivedAt": "2026-10-19T11:27:43.242Z"
+    },
+    "src/data/portfolio.ts:1": {
+      "agent": "oma-reviewer",
+      "section": "src/data/portfolio.ts:1",
+      "hash": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Lines 4-7 import data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json; lines 10-77 define matching TypeScript interfaces and mapSkillCategories to map icon strings to LucideIcon components; lines 107-111 bind portfolioData.skills, projects, companyActivities, certifications, and education from the imported JSON modules. Validator check-json-data passed with exitCode 0.",
+      "findings": [],
+      "reviewerConversationId": "03adc754-5c42-44bb-8140-fe192c6d3fa2",
+      "receivedAt": "2026-10-19T11:28:17.913Z"
     }
   },
-  "updatedAt": "2026-10-19T11:12:06.638Z",
-  "revision": 25,
+  "updatedAt": "2026-10-19T11:28:17.915Z",
+  "revision": 44,
   "handoff": {
     "agent": "oma-doc-reader",
     "summary": "Read package.json (React 19.1.0, Vite 6.4.4, TypeScript 5.8.3, lucide-react 0.511.0, vite-plugin-singlefile 2.3.4), vite.config.ts, index.html, src/data/portfolio.ts, src/components/EditorialTemplate.tsx, and src/App.tsx. Mapped Sections 02 (companyActivities -> data/Career.json), 03 (projects -> data/Works.json), 04 (skills with string-to-LucideIcon mapping -> data/TechnicalProficiency.json), and 05 (certifications + education -> data/Credentials.json), and noted viteSingleFile/file:// constraints.",
@@ -205,85 +205,85 @@
   "designSealed": true,
   "tickets": {
     "section:data/Career.json:1": {
-      "token": "3238bc24-b70e-45d9-95bf-d3d0a2a17f67",
+      "token": "529bd75e-c32e-4ba6-8dc8-fa1fffb05ea4",
       "kind": "section",
       "target": "data/Career.json:1",
       "basis": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
       "used": true,
-      "actor": "1c9b5766-456d-4d00-b438-78bb79f9ba5a",
-      "receiptHash": "28df4ebed69eb1897d1fcb464d0919bbce481a036134d286599ab6896a12925c"
+      "actor": "0db54c15-5638-4fa5-9abc-de5a7fd6c536",
+      "receiptHash": "e3235b8a25bf668115d4112827957021cde689c2206fe876fd512d72862ed2ce"
     },
     "section:data/Works.json:1": {
-      "token": "5952ccaf-9acd-4379-8936-2eac6dbf793f",
+      "token": "e46afdea-e54b-4ff4-84eb-c6aef2f07de2",
       "kind": "section",
       "target": "data/Works.json:1",
       "basis": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
       "used": true,
-      "actor": "14a8448e-1946-4caf-9ebd-c84ec34680a7",
-      "receiptHash": "ef09563b21f371aacd10a6b9dcf99779692fc4494e77f11278ec788c8e607ca6"
+      "actor": "13ed7d32-dbdd-4a5a-9c85-bc6c2690fab5",
+      "receiptHash": "0469c9986eaf5277a6c3f381fa90c1de34229f8d41f3d6ed73764cb7c0bcfd6c"
     },
     "section:data/TechnicalProficiency.json:1": {
-      "token": "b102f8ef-e804-4074-9711-845870bad64b",
+      "token": "0bb52cde-df81-47a4-a382-0a2a21cd8555",
       "kind": "section",
       "target": "data/TechnicalProficiency.json:1",
       "basis": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
       "used": true,
-      "actor": "b66cd831-456c-4f94-9f7e-42b8a311c766",
-      "receiptHash": "c278984a781bf00b9170827804f028b9f835662c79af7f90ceffe2348bc3c79c"
+      "actor": "0050179d-2575-47bd-b089-adb2767749f9",
+      "receiptHash": "c7d248b620a9508e2192468062d6b10037db36cd9e451aa9daaa410324cf47c1"
     },
     "section:data/Credentials.json:1": {
-      "token": "a9b1bb2d-40fc-4818-ba45-6b90ef34f1ef",
+      "token": "090ccc12-2dec-4b80-88ee-d3cbd768764c",
       "kind": "section",
       "target": "data/Credentials.json:1",
       "basis": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7",
       "used": true,
-      "actor": "3f08c288-ce08-4a67-bbdf-43f36b88ee96",
-      "receiptHash": "bb9cc21f6473c1c6aa0b8e100667d9bbd17237e4eebe32c3afa3ec4f1989fff5"
+      "actor": "94a22ac8-4c35-4122-a16e-c51783635d43",
+      "receiptHash": "204ea1b3a3ac8328aa19876c122dd52711b941568c2af65d8166402a787bf26e"
     },
     "section:tsconfig.json:1": {
-      "token": "cf6e31f8-8155-4351-97f4-829c38f263aa",
+      "token": "a029e001-7715-455d-9385-ed94566e908b",
       "kind": "section",
       "target": "tsconfig.json:1",
       "basis": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
       "used": true,
-      "actor": "3b5f245c-165c-4b61-98db-c4f658d0b834",
-      "receiptHash": "fbe1d01fd47f0daff7d567aed76b43a6e4b4ec23c09b68e6f4c0504c40810745"
+      "actor": "cb7e46e9-80b9-47ee-ab03-dc6789283b57",
+      "receiptHash": "cf95e263e2953a94d4b7e8a490ad27826a8868ad41d5434ecf1b0dc4594d1845"
     },
     "section:src/data/portfolio.ts:1": {
-      "token": "c586b445-2e87-44ec-84c1-95d76c111d54",
+      "token": "393f5dff-d8fa-42b5-b211-6b6fa1dbe17c",
       "kind": "section",
       "target": "src/data/portfolio.ts:1",
-      "basis": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
+      "basis": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26",
       "used": true,
-      "actor": "bd6b3b56-9a69-449e-a9ac-44e5e27399b1",
-      "receiptHash": "88f65261230f90e439db6e926a75041421300d2b4a0fc10fd0033f5c169047c5"
+      "actor": "03adc754-5c42-44bb-8140-fe192c6d3fa2",
+      "receiptHash": "30ba9618d8d5b3a5c7791629a4ce20b49be6f5d1a6cea335b7e5acb784a9296e"
     },
     "section:src/data/portfolio.ts:121": {
-      "token": "a9a2ef6f-6c5b-44da-8492-958f06a33488",
+      "token": "17a95fe3-f026-49df-822c-e404e259dbad",
       "kind": "section",
       "target": "src/data/portfolio.ts:121",
-      "basis": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
+      "basis": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26",
       "used": true,
-      "actor": "7621bfa4-7fa6-4389-96a6-64c00a162b53",
-      "receiptHash": "5099aff706ff025f3329f99b48b78e9f6e3ce6dea3e5abc8fa2f2fdb4d89b01f"
+      "actor": "dbe746bd-91d3-443b-b3f1-bdd811a1c347",
+      "receiptHash": "53b7e32fb3cc275da11115eb84b4754c331355dbdd854a446cedeec780e7be12"
     },
     "section:src/components/EditorialTemplate.tsx:1": {
-      "token": "919d9e80-8cb7-45bb-83d4-6fda4a48f69f",
+      "token": "dfaddeef-83c6-4c3a-907a-a541bc0f5560",
       "kind": "section",
       "target": "src/components/EditorialTemplate.tsx:1",
       "basis": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4",
       "used": true,
-      "actor": "5c15aa58-1347-48b3-b7e3-181862f4c354",
-      "receiptHash": "bb8f92234b69cfa0d71571e4cffefb62902666a7ad9b12f78c8cf6e0495e69aa"
+      "actor": "309a0c4b-35d0-4a79-b1e2-b06ae465bf95",
+      "receiptHash": "519001405552db50c12b59e6f4897cab82ce34ced48648c6997f36e88b488fe6"
     },
     "section:src/components/EditorialTemplate.tsx:121": {
-      "token": "d3135454-a36b-46b7-b517-77d28fee3d86",
+      "token": "d95092dc-d585-400f-9d61-7e9b77414498",
       "kind": "section",
       "target": "src/components/EditorialTemplate.tsx:121",
       "basis": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4",
       "used": true,
-      "actor": "3781d967-a032-491e-8c0d-363a84eddca9",
-      "receiptHash": "b8d6118a03e4d62995a0fff77e40c945fbd3bb421f68142844596abb90fe5464"
+      "actor": "150a43cb-09bc-46a2-9008-c9db4507f31d",
+      "receiptHash": "b25a469fdae1d70e5c18bec62b33a9f6cc829c913a9528d523a7cfcc757ca615"
     }
   },
   "plan": {
@@ -346,10 +346,10 @@
   },
   "receiptMode": "native",
   "checkpoint": {
-    "id": "9bfcf61b-2906-4bc4-ad99-6d791eca3788",
-    "path": ".omg/state/checkpoints/9bfcf61b-2906-4bc4-ad99-6d791eca3788.json",
-    "hash": "4848faf2425375ee91ecd1010b714e232311f04f55857ff09305b56f5ea3b576",
-    "revision": 7,
+    "id": "99d04d94-d8f6-4774-91ac-6b54be61283d",
+    "path": ".omg/state/checkpoints/99d04d94-d8f6-4774-91ac-6b54be61283d.json",
+    "hash": "abac56a5c623c96cf6c2df5e3e5ff10e31a0e22539ea6e1189bfac799a350f19",
+    "revision": 26,
     "reason": "verify"
   },
   "planReview": {
@@ -390,9 +390,9 @@
       "exitCode": 0,
       "signal": null,
       "status": "pass",
-      "evidence": ".omg/evidence/1ae6dbe9-8ae1-4d27-9c91-839183698cf5.txt",
-      "evidenceHash": "4017835d18c44d9ec01045d707b520c57b31aa429898e7d590088889d1911465",
-      "at": "2026-10-19T11:10:38.818Z"
+      "evidence": ".omg/evidence/3b82932c-b58a-47fc-90d3-620319eb1215.txt",
+      "evidenceHash": "e5a1df64830edcd10ce8ced9f8909c0d622018a5a14c30e30a0184928cae0e8c",
+      "at": "2026-10-19T11:26:48.537Z"
     }
   ],
   "hashes": {
@@ -401,7 +401,7 @@
     "data/TechnicalProficiency.json": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
     "data/Credentials.json": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7",
     "tsconfig.json": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
-    "src/data/portfolio.ts": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
+    "src/data/portfolio.ts": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26",
     "src/components/EditorialTemplate.tsx": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4"
   },
   "sections": [
@@ -445,14 +445,14 @@
       "file": "src/data/portfolio.ts",
       "start": 1,
       "end": 120,
-      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d"
+      "hash": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26"
     },
     {
       "id": "src/data/portfolio.ts:121",
       "file": "src/data/portfolio.ts",
       "start": 121,
-      "end": 196,
-      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d"
+      "end": 203,
+      "hash": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26"
     },
     {
       "id": "src/components/EditorialTemplate.tsx:1",

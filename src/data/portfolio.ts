@@ -124,6 +124,13 @@ export const portfolioData = {
             filename: "성적증명서.pdf",
             filePath: "docs/성적증명서.pdf",
             format: "PDF"
+        },
+        {
+            id: "doc-degree",
+            title: "학위증명서(학점은행제)",
+            filename: "학위증명서.pdf",
+            filePath: "docs/학위증명서.pdf",
+            format: "PDF"
         }
     ] as PortfolioDocument[]
 };

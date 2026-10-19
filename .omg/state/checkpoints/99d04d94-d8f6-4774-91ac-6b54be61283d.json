@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "id": "99d04d94-d8f6-4774-91ac-6b54be61283d",
+  "owner": "d4c9b1b0-fb89-4020-8268-d43f29f52f8d",
+  "workspace": "C:\\project\\portfolio",
+  "phase": "review",
+  "revision": 26,
+  "reason": "verify",
+  "at": "2026-10-19T11:26:48.541Z",
+  "planHash": "7eec5a6c57e234735c36dc91aed27f193aa59011bdc6f7fa42ed62151fca38c2",
+  "sourceHashes": {
+    "data/Career.json": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
+    "data/Works.json": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
+    "data/TechnicalProficiency.json": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
+    "data/Credentials.json": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7",
+    "tsconfig.json": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
+    "src/data/portfolio.ts": "c021c716ed78382c967d271fa0c0f83213876c67bbf256c320d210bf4463ba26",
+    "src/components/EditorialTemplate.tsx": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4"
+  },
+  "pack": {
+    "phase": "review",
+    "revision": 25,
+    "owner": "d4c9b1b0-fb89-4020-8268-d43f29f52f8d",
+    "intent": "Load portfolio sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and 05 (Credentials & Education) from data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json populated with current webpage data and dynamically reflected on edit",
+    "care": {
+      "risk": "routine",
+      "sectionLines": 120,
+      "batchSize": 3,
+      "cycles": 6,
+      "reasons": [],
+      "omittedReasons": 0
+    },
+    "planHash": "7eec5a6c57e234735c36dc91aed27f193aa59011bdc6f7fa42ed62151fca38c2",
+    "designVerdict": "pass",
+    "scope": [
+      "data/Career.json",
+      "data/Works.json",
+      "data/TechnicalProficiency.json",
+      "data/Credentials.json",
+      "tsconfig.json",
+      "src/data/portfolio.ts"
+    ],
+    "constraints": [
+      "Populate data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json with the exact current webpage data from src/data/portfolio.ts",
+      "Ensure JSON edits dynamically update the rendered webpage via Vite HMR and runtime fetch fallback while preserving file:// compatibility",
+      "Maintain TypeScript type safety (tsc --noEmit) and existing EditorialTemplate visual structure"
+    ],
+    "openDecisions": [],
+    "checks": [
+      {
+        "id": "check-json-data",
+        "status": "pass",
+        "evidence": ".omg/evidence/3b82932c-b58a-47fc-90d3-620319eb1215.txt"
+      }
+    ],
+    "checkCount": 1,
+    "pendingReviewCount": 9,
+    "nextSections": [
+      {
+        "id": "data/Career.json:1",
+        "file": "data/Career.json",
+        "start": 1,
+        "end": 56,
+        "hash": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894"
+      },
+      {
+        "id": "data/Works.json:1",
+        "file": "data/Works.json",
+        "start": 1,
+        "end": 75,
+        "hash": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d"
+      },
+      {
+        "id": "data/TechnicalProficiency.json:1",
+        "file": "data/TechnicalProficiency.json",
+        "start": 1,
+        "end": 30,
+        "hash": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3"
+      }
+    ],
+    "lockedFileCount": 0,
+    "batch": [],
+    "issueCount": 0,
+    "next": "review-missing-sections",
+    "omitted": {
+      "files": 1,
+      "checks": 0,
+      "constraints": 0
+    }
+  }
+}
