@@ -1,0 +1,29 @@
+[
+  {
+    "category": "Frontend Engineering",
+    "icon": "Layout",
+    "items": [
+      { "name": "TypeScript / React 19", "stars": "★★★★☆" },
+      { "name": "C#", "stars": "★★★★★" },
+      { "name": "VB6", "stars": "★★★★☆" },
+      { "name": "JSP", "stars": "★★★☆☆" }
+    ]
+  },
+  {
+    "category": "Backend & Distributed System",
+    "icon": "Server",
+    "items": [
+      { "name": "MySql", "stars": "★★★★★" },
+      { "name": "Oracle", "stars": "★★★☆☆" },
+      { "name": "Node.js", "stars": "★★★☆☆" }
+    ]
+  },
+  {
+    "category": "DevOps & Cloud Native",
+    "icon": "CloudCog",
+    "items": [
+      { "name": "AWS", "stars": "★★★☆☆" },
+      { "name": "Docker", "stars": "★★☆☆☆" }
+    ]
+  }
+]

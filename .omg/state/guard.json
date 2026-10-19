@@ -1,233 +1,328 @@
 {
   "schema": 1,
-  "owner": "b0a76448-e0df-4486-8a07-13d80025d103",
-  "phase": "implement",
+  "owner": "d4c9b1b0-fb89-4020-8268-d43f29f52f8d",
+  "phase": "review",
   "cycle": 0,
   "nudges": 0,
   "locks": {},
   "issues": [],
   "batch": [],
   "reviews": {
-    "index.html:1": {
+    "data/Works.json:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:1",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "data/Works.json:1",
+      "hash": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Verified index.html lines 1-120: the sticky top header panel (<header>) has been completely removed before <main id=\"template-viewport\">, the page title and viewport comment reflect Editorial Minimal only, and the document modal UI structure (lines 85-120) is preserved without regression. Validator check-editorial passed (exitCode 0).",
+      "evidence": "data/Works.json lines 1-75 contain a valid JSON array of 8 project records (proj-1 through proj-8) conforming to the Project interface (id, category, title, period, summary, details, techs), imported statically and fetched dynamically in src/data/portfolio.ts, and verified by check-json-data.",
       "findings": [],
-      "reviewerConversationId": "d08afc93-72aa-4a0e-9396-30720c1eaf2c",
-      "receivedAt": "2026-10-18T12:05:27.772Z"
+      "reviewerConversationId": "14a8448e-1946-4caf-9ebd-c84ec34680a7",
+      "receivedAt": "2026-10-19T11:11:21.885Z"
     },
-    "index.html:601": {
+    "src/data/portfolio.ts:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:601",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "src/data/portfolio.ts:1",
+      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Verified index.html lines 601-720 contain the Editorial Minimal (Template C) sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and the start of 05 (Credentials & Education) with no top panel present, corroborated by passing check-editorial evidence.",
+      "evidence": "Reviewed src/data/portfolio.ts lines 1-120 against the acceptance criteria and check-json-data validator output. The file imports data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json, defines clean TypeScript interfaces (SkillCategory, RawSkillCategory, Project, CompanyActivity, CertificationRecord, EducationRecord, CredentialsData, PortfolioDocument), maps icon string identifiers (Layout, Server, CloudCog) to LucideIcon components via mapSkillCategories, and initializes portfolioData.skills, projects, companyActivities, certifications, and education directly from those JSON imports while preserving profile and document definitions.",
       "findings": [],
-      "reviewerConversationId": "d723a027-b118-4e9b-aaa2-7ab5bfae119c",
-      "receivedAt": "2026-10-18T12:05:31.549Z"
+      "reviewerConversationId": "bd6b3b56-9a69-449e-a9ac-44e5e27399b1",
+      "receivedAt": "2026-10-19T11:11:32.184Z"
     },
-    "index.html:721": {
+    "data/Career.json:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:721",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "data/Career.json:1",
+      "hash": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Reviewed index.html lines 721-810 against hash 17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094 and verified check-editorial (exitCode 0). Template C sections 05 (Credentials & Education) and 06 (Official Dossier & Resume) close cleanly, renderCurrentTemplate() exclusively renders renderTemplateC() into #template-viewport without any template switcher state or top-panel DOM updates, and the footer and document root close properly.",
+      "evidence": "data/Career.json lines 1-56 define a valid JSON array of 5 CompanyActivity items matching the webpage career section schema, imported statically and fetched dynamically in src/data/portfolio.ts, and verified by check-json-data.",
       "findings": [],
-      "reviewerConversationId": "f5dfc094-3955-4315-8b82-7fb6dc5f077c",
-      "receivedAt": "2026-10-18T12:05:32.159Z"
+      "reviewerConversationId": "1c9b5766-456d-4d00-b438-78bb79f9ba5a",
+      "receivedAt": "2026-10-19T11:11:32.284Z"
     },
-    "index.html:241": {
+    "data/Credentials.json:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:241",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "data/Credentials.json:1",
+      "hash": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Reviewed index.html lines 241-360 containing portfolioData arrays (companyActivities, certifications, education, and documents) preserved for Editorial Minimal (Template C) rendering, verified alongside check-editorial pass evidence.",
+      "evidence": "Verified data/Credentials.json lines 1-41 contain the exact 6 certification records and 2 education records matching CredentialsData in src/data/portfolio.ts, imported for static/HMR loading and fetched dynamically at runtime, with check-json-data passing (exitCode 0).",
       "findings": [],
-      "reviewerConversationId": "a3998519-0b9b-462c-93d1-aa366e03aefc",
-      "receivedAt": "2026-10-18T12:05:32.423Z"
+      "reviewerConversationId": "3f08c288-ce08-4a67-bbdf-43f36b88ee96",
+      "receivedAt": "2026-10-19T11:11:41.949Z"
     },
-    "index.html:481": {
+    "data/TechnicalProficiency.json:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:481",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "data/TechnicalProficiency.json:1",
+      "hash": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Reviewed index.html lines 481-600. renderHeroSection completes cleanly and transitions directly into renderTemplateC() (Editorial Minimal) without Template A or B render functions. renderTemplateC() preserves the quick anchor navigation, renderHeroSection('C'), and section-activities header. Validator check-editorial passed with verified integrity.",
+      "evidence": "Verified data/TechnicalProficiency.json lines 1-30 contain the 3 skill categories (Frontend Engineering, Backend & Distributed System, DevOps & Cloud Native) with valid icon identifiers (Layout, Server, CloudCog) and items matching RawSkillCategory[] in src/data/portfolio.ts, imported statically and fetched dynamically via usePortfolioData, and verified by check-json-data.",
       "findings": [],
-      "reviewerConversationId": "378bc6c3-7152-41f4-b6d7-df41f1acf585",
-      "receivedAt": "2026-10-18T12:05:40.848Z"
+      "reviewerConversationId": "b66cd831-456c-4f94-9f7e-42b8a311c766",
+      "receivedAt": "2026-10-19T11:11:45.127Z"
     },
-    "index.html:121": {
+    "tsconfig.json:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:121",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "tsconfig.json:1",
+      "hash": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Reviewed index.html lines 121-240 containing the closing modal tags, #toast-box notification element, and the portfolioData object definition (profile, skills, projects). All data and toast markup are preserved intact without any top panel markup or non-editorial template bloat; check-editorial validator passed.",
+      "evidence": "Lines 14-17 enable resolveJsonModule: true, include vite/client types for import.meta.hot HMR typing, and add data to the included paths alongside src and vite.config.ts. Verified against src/data/portfolio.ts JSON imports and passing check-json-data validator evidence.",
       "findings": [],
-      "reviewerConversationId": "8f140a96-1e26-4d28-92c7-a44edcc6e724",
-      "receivedAt": "2026-10-18T12:05:41.868Z"
+      "reviewerConversationId": "3b5f245c-165c-4b61-98db-c4f658d0b834",
+      "receivedAt": "2026-10-19T11:11:46.803Z"
     },
-    "index.html:361": {
+    "src/components/EditorialTemplate.tsx:1": {
       "agent": "oma-reviewer",
-      "section": "index.html:361",
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "section": "src/components/EditorialTemplate.tsx:1",
+      "hash": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4",
       "verdict": "pass",
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
-      "evidence": "Reviewed index.html lines 361-480 and verified that modal/toast/clipboard helpers and renderHeroSection are preserved cleanly without any top header panel or Template A/B renderer functions, backed by passing check-editorial validator evidence.",
+      "evidence": "Verified src/components/EditorialTemplate.tsx lines 1-120 imports usePortfolioData from '../data/portfolio', invokes it at the component top level, and renders sections 02 (companyActivities), 03 (projects), and 04 (skills) from the dynamic hook state without altering the visual layout or TypeScript contracts; check-json-data passed (exitCode 0).",
       "findings": [],
-      "reviewerConversationId": "ff138121-15a5-4734-ba9d-8db9a238aa39",
-      "receivedAt": "2026-10-18T12:05:43.854Z"
+      "reviewerConversationId": "5c15aa58-1347-48b3-b7e3-181862f4c354",
+      "receivedAt": "2026-10-19T11:11:57.284Z"
+    },
+    "src/data/portfolio.ts:121": {
+      "agent": "oma-reviewer",
+      "section": "src/data/portfolio.ts:121",
+      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Reviewed src/data/portfolio.ts lines 121-196 against validator evidence check-json-data (exitCode 0). populate-json-files is covered by the imported JSON structures; load-sections-from-json is satisfied by usePortfolioData initializing companyActivities, projects, skills, certifications, and education from the imported JSON modules; dynamic-json-updates is satisfied by the useEffect updating state from bundled JSON and fetching runtime JSON with cache-busting on mount and window focus while safely skipping fetch on file:// protocol.",
+      "findings": [],
+      "reviewerConversationId": "7621bfa4-7fa6-4389-96a6-64c00a162b53",
+      "receivedAt": "2026-10-19T11:12:01.309Z"
+    },
+    "src/components/EditorialTemplate.tsx:121": {
+      "agent": "oma-reviewer",
+      "section": "src/components/EditorialTemplate.tsx:121",
+      "hash": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4",
+      "verdict": "pass",
+      "criteria": [
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
+      ],
+      "evidence": "Lines 126-155 render Section 05 (Credentials & Education) using portfolioData.certifications and portfolioData.education supplied by usePortfolioData(), which loads and dynamically updates from data/Credentials.json while preserving Section 06 and existing layout.",
+      "findings": [],
+      "reviewerConversationId": "3781d967-a032-491e-8c0d-363a84eddca9",
+      "receivedAt": "2026-10-19T11:12:06.636Z"
     }
   },
-  "updatedAt": "2026-10-18T12:05:43.856Z",
-  "revision": 39,
+  "updatedAt": "2026-10-19T11:12:06.638Z",
+  "revision": 25,
   "handoff": {
     "agent": "oma-doc-reader",
-    "summary": "The portfolio workspace contains a single file, index.html (1,395 lines), using Tailwind CSS CDN and Lucide icons. The sticky top panel (<header>, lines 80-115) renders the brand indicator and 3 template switcher buttons (tab-btn-A/B/C) managed by switchTemplate() and renderCurrentTemplate() (lines 1347-1376) with default currentTemplate = 'A' (line 412). Template C ('3. 에디토리얼 미니멀') is defined in renderTemplateC() (lines 1133-1344) and relies on shared portfolioData (lines 171-410), renderHeroSection('C') (lines 506-611), modal/toast helpers (lines 416-503), and an internal Template 03 intro banner (lines 1136-1143) plus anchor nav bar (lines 1145-1156).",
+    "summary": "Read package.json (React 19.1.0, Vite 6.4.4, TypeScript 5.8.3, lucide-react 0.511.0, vite-plugin-singlefile 2.3.4), vite.config.ts, index.html, src/data/portfolio.ts, src/components/EditorialTemplate.tsx, and src/App.tsx. Mapped Sections 02 (companyActivities -> data/Career.json), 03 (projects -> data/Works.json), 04 (skills with string-to-LucideIcon mapping -> data/TechnicalProficiency.json), and 05 (certifications + education -> data/Credentials.json), and noted viteSingleFile/file:// constraints.",
     "sources": [
-      "index.html"
+      "package.json",
+      "vite.config.ts",
+      "index.html",
+      "src/data/portfolio.ts",
+      "src/components/EditorialTemplate.tsx",
+      "src/App.tsx"
     ],
-    "unknowns": []
+    "unknowns": [
+      "Exact filesystem placement of data/*.json and runtime fetch vs Vite import/HMR mechanism.",
+      "Whether Section 03 heading meta should dynamically reflect Works.json item count."
+    ]
   },
   "brief": {
-    "objective": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+    "objective": "Load portfolio sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and 05 (Credentials & Education) from data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json populated with current webpage data and dynamically reflected on edit",
     "risk": "routine",
     "constraints": [
-      "Preserve all Template C sections (01.PROFILE through 06.ARCHIVES), hero section, modal/toast helpers, and footer",
-      "Remove the sticky top template selector panel (<header>)"
+      "Populate data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json with the exact current webpage data from src/data/portfolio.ts",
+      "Ensure JSON edits dynamically update the rendered webpage via Vite HMR and runtime fetch fallback while preserving file:// compatibility",
+      "Maintain TypeScript type safety (tsc --noEmit) and existing EditorialTemplate visual structure"
     ],
     "nonGoals": [
-      "Do not alter portfolioData content or brand color palette"
+      "Do not externalize Section 01 (Profile) or Section 06 (Archives/Documents) to JSON files",
+      "Do not alter authentication or modal download flows"
     ],
     "decisions": [
       {
-        "id": "template-selection",
-        "question": "Which template should be displayed and what should happen to the top panel?",
+        "id": "json-paths",
+        "question": "Which JSON file paths correspond to sections 02 through 05?",
         "owner": "user",
         "status": "resolved",
-        "answer": "Display only Template C (3. 에디토리얼 미니멀) and delete the top template selector panel (<header>)",
-        "basis": "Explicit user request: '3. 에디토리얼 미니멀 으로만 보일 수 있게 하고 상단 패널 삭제해주세요.'"
+        "answer": "data/Career.json (02), data/Works.json (03), data/TechnicalProficiency.json (04), data/Credentials.json (05)",
+        "basis": "Explicitly specified in the user request and already present as empty files under data/"
+      },
+      {
+        "id": "dynamic-loading-mechanism",
+        "question": "How should JSON files be loaded so edits dynamically reflect on the webpage while keeping single-file/file:// compatibility?",
+        "owner": "agent",
+        "status": "resolved",
+        "answer": "Import data/*.json in src/data/portfolio.ts for bundled/HMR reactivity and provide usePortfolioData() with runtime fetch refresh when served over HTTP(S)",
+        "basis": "Vite natively hot-reloads imported JSON files during dev/build, and runtime fetch over HTTP(S) refreshes edited JSON files dynamically without breaking file:// fallback"
+      },
+      {
+        "id": "skill-icon-mapping",
+        "question": "How should Lucide icons for Section 04 (TechnicalProficiency) be represented in JSON?",
+        "owner": "agent",
+        "status": "resolved",
+        "answer": "Store icon identifier strings ('Layout', 'Server', 'CloudCog') in data/TechnicalProficiency.json and map them to LucideIcon components in src/data/portfolio.ts",
+        "basis": "JSON cannot serialize function references; string-to-icon mapping preserves the exact Layout, Server, and CloudCog icons"
       }
     ],
     "conflicts": []
   },
   "designSealed": true,
   "tickets": {
-    "section:index.html:1": {
-      "token": "04653de4-781b-4171-9c95-d6d97cd0182d",
+    "section:data/Career.json:1": {
+      "token": "3238bc24-b70e-45d9-95bf-d3d0a2a17f67",
       "kind": "section",
-      "target": "index.html:1",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "data/Career.json:1",
+      "basis": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
       "used": true,
-      "actor": "d08afc93-72aa-4a0e-9396-30720c1eaf2c",
-      "receiptHash": "fe52fec0d998b0ac9938e8893c004b4baa6a5e758ec9cab210039fc16ee76b5a"
+      "actor": "1c9b5766-456d-4d00-b438-78bb79f9ba5a",
+      "receiptHash": "28df4ebed69eb1897d1fcb464d0919bbce481a036134d286599ab6896a12925c"
     },
-    "section:index.html:121": {
-      "token": "7e76f620-5b45-4476-8f2a-93f794ce8281",
+    "section:data/Works.json:1": {
+      "token": "5952ccaf-9acd-4379-8936-2eac6dbf793f",
       "kind": "section",
-      "target": "index.html:121",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "data/Works.json:1",
+      "basis": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
       "used": true,
-      "actor": "8f140a96-1e26-4d28-92c7-a44edcc6e724",
-      "receiptHash": "9c731f6ae716d6e1233b0062dc7561d402d4cebe5785c6befee142b385cafcdc"
+      "actor": "14a8448e-1946-4caf-9ebd-c84ec34680a7",
+      "receiptHash": "ef09563b21f371aacd10a6b9dcf99779692fc4494e77f11278ec788c8e607ca6"
     },
-    "section:index.html:241": {
-      "token": "07e4d07e-358d-42e9-af01-d03298a4619a",
+    "section:data/TechnicalProficiency.json:1": {
+      "token": "b102f8ef-e804-4074-9711-845870bad64b",
       "kind": "section",
-      "target": "index.html:241",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "data/TechnicalProficiency.json:1",
+      "basis": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
       "used": true,
-      "actor": "a3998519-0b9b-462c-93d1-aa366e03aefc",
-      "receiptHash": "c1b88e85000286f82646870748ab75a10804923e25cff2e23045e68511ab9a59"
+      "actor": "b66cd831-456c-4f94-9f7e-42b8a311c766",
+      "receiptHash": "c278984a781bf00b9170827804f028b9f835662c79af7f90ceffe2348bc3c79c"
     },
-    "section:index.html:361": {
-      "token": "243a3a84-439c-4e70-b168-729c2a6c3cb4",
+    "section:data/Credentials.json:1": {
+      "token": "a9b1bb2d-40fc-4818-ba45-6b90ef34f1ef",
       "kind": "section",
-      "target": "index.html:361",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "data/Credentials.json:1",
+      "basis": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7",
       "used": true,
-      "actor": "ff138121-15a5-4734-ba9d-8db9a238aa39",
-      "receiptHash": "92b9beed8b8ef79629d64de27ae6cb7316df7e98fcebe0587c54d89e7ee724e7"
+      "actor": "3f08c288-ce08-4a67-bbdf-43f36b88ee96",
+      "receiptHash": "bb9cc21f6473c1c6aa0b8e100667d9bbd17237e4eebe32c3afa3ec4f1989fff5"
     },
-    "section:index.html:481": {
-      "token": "5d47d9a6-a5d2-422a-ad3c-488a7b6c4457",
+    "section:tsconfig.json:1": {
+      "token": "cf6e31f8-8155-4351-97f4-829c38f263aa",
       "kind": "section",
-      "target": "index.html:481",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "tsconfig.json:1",
+      "basis": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
       "used": true,
-      "actor": "378bc6c3-7152-41f4-b6d7-df41f1acf585",
-      "receiptHash": "02aed6fe3804348689c2b4c4588a1c2fac6a3c10dc24465b4fa10d5fdc0ce21b"
+      "actor": "3b5f245c-165c-4b61-98db-c4f658d0b834",
+      "receiptHash": "fbe1d01fd47f0daff7d567aed76b43a6e4b4ec23c09b68e6f4c0504c40810745"
     },
-    "section:index.html:601": {
-      "token": "d3c0b97d-c146-48cc-9419-8838fc44ab05",
+    "section:src/data/portfolio.ts:1": {
+      "token": "c586b445-2e87-44ec-84c1-95d76c111d54",
       "kind": "section",
-      "target": "index.html:601",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "src/data/portfolio.ts:1",
+      "basis": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
       "used": true,
-      "actor": "d723a027-b118-4e9b-aaa2-7ab5bfae119c",
-      "receiptHash": "5a90eb518434a176c566127a654bce7e08aad90ae7dff8118c47bcba759a4111"
+      "actor": "bd6b3b56-9a69-449e-a9ac-44e5e27399b1",
+      "receiptHash": "88f65261230f90e439db6e926a75041421300d2b4a0fc10fd0033f5c169047c5"
     },
-    "section:index.html:721": {
-      "token": "32a99ffe-198d-4b45-be37-c61fb97944e2",
+    "section:src/data/portfolio.ts:121": {
+      "token": "a9a2ef6f-6c5b-44da-8492-958f06a33488",
       "kind": "section",
-      "target": "index.html:721",
-      "basis": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094",
+      "target": "src/data/portfolio.ts:121",
+      "basis": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
       "used": true,
-      "actor": "f5dfc094-3955-4315-8b82-7fb6dc5f077c",
-      "receiptHash": "fab38c79c7952ce9fec0d52e79cddf17c64d3c09f18c5570812ec2835599d0a9"
+      "actor": "7621bfa4-7fa6-4389-96a6-64c00a162b53",
+      "receiptHash": "5099aff706ff025f3329f99b48b78e9f6e3ce6dea3e5abc8fa2f2fdb4d89b01f"
+    },
+    "section:src/components/EditorialTemplate.tsx:1": {
+      "token": "919d9e80-8cb7-45bb-83d4-6fda4a48f69f",
+      "kind": "section",
+      "target": "src/components/EditorialTemplate.tsx:1",
+      "basis": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4",
+      "used": true,
+      "actor": "5c15aa58-1347-48b3-b7e3-181862f4c354",
+      "receiptHash": "bb8f92234b69cfa0d71571e4cffefb62902666a7ad9b12f78c8cf6e0495e69aa"
+    },
+    "section:src/components/EditorialTemplate.tsx:121": {
+      "token": "d3135454-a36b-46b7-b517-77d28fee3d86",
+      "kind": "section",
+      "target": "src/components/EditorialTemplate.tsx:121",
+      "basis": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4",
+      "used": true,
+      "actor": "3781d967-a032-491e-8c0d-363a84eddca9",
+      "receiptHash": "b8d6118a03e4d62995a0fff77e40c945fbd3bb421f68142844596abb90fe5464"
     }
   },
   "plan": {
-    "intent": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+    "intent": "Load portfolio sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and 05 (Credentials & Education) from data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json populated with current webpage data and dynamically reflected on edit",
     "criteria": [
-      "remove-top-panel",
-      "editorial-minimal-only"
+      "populate-json-files",
+      "load-sections-from-json",
+      "dynamic-json-updates"
     ],
     "files": [
-      "index.html"
+      "data/Career.json",
+      "data/Works.json",
+      "data/TechnicalProficiency.json",
+      "data/Credentials.json",
+      "tsconfig.json",
+      "src/data/portfolio.ts",
+      "src/components/EditorialTemplate.tsx"
     ],
     "testFiles": [],
     "checks": [
       {
-        "id": "check-editorial",
+        "id": "check-json-data",
         "argv": [
           "node",
-          ".omg/drafts/check-editorial.mjs"
+          ".omg/drafts/check-json-data.mjs"
         ],
         "files": [
-          "index.html"
+          "data/Career.json",
+          "data/Works.json",
+          "data/TechnicalProficiency.json",
+          "data/Credentials.json",
+          "tsconfig.json",
+          "src/data/portfolio.ts",
+          "src/components/EditorialTemplate.tsx"
         ],
         "criteria": [
-          "remove-top-panel",
-          "editorial-minimal-only"
+          "populate-json-files",
+          "load-sections-from-json",
+          "dynamic-json-updates"
         ]
       }
     ]
@@ -239,105 +334,139 @@
     "cycles": 6,
     "reasons": []
   },
-  "planHash": "134f1ad211a4cea42d615fa80ef50293d0d4503ff5ea5d32b0c74a9aee135620",
+  "planHash": "7eec5a6c57e234735c36dc91aed27f193aa59011bdc6f7fa42ed62151fca38c2",
   "planBasis": {
-    "index.html": "4482d4b0364666f31aec01697bcb9a29621102aca9712eeb7f701d554cf61e93"
+    "data/Career.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/Works.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/TechnicalProficiency.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "data/Credentials.json": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tsconfig.json": "b432db90524fa7a095228489c965290210895fee34d6f77004743ae5ccbfc5a1",
+    "src/data/portfolio.ts": "0cec9852cfd7647a25c3fbed65c597ee2086eaa7fd4437bcdfe30d6726c76c82",
+    "src/components/EditorialTemplate.tsx": "08c1ebd604d4383e5deeaaaf4a3c7dd11ba324c991deaf0b085b3e7670fa8fca"
   },
   "receiptMode": "native",
   "checkpoint": {
-    "id": "1daeb9f8-4acc-4a26-9e67-d60033370244",
-    "path": ".omg/state/checkpoints/1daeb9f8-4acc-4a26-9e67-d60033370244.json",
-    "hash": "1edfc71d83d715b89fbcbd95032f0e8ebf41629b0f38dd148b176770c8b4da48",
-    "revision": 25,
+    "id": "9bfcf61b-2906-4bc4-ad99-6d791eca3788",
+    "path": ".omg/state/checkpoints/9bfcf61b-2906-4bc4-ad99-6d791eca3788.json",
+    "hash": "4848faf2425375ee91ecd1010b714e232311f04f55857ff09305b56f5ea3b576",
+    "revision": 7,
     "reason": "verify"
   },
   "planReview": {
     "agent": "oma-design-auditor",
-    "planHash": "134f1ad211a4cea42d615fa80ef50293d0d4503ff5ea5d32b0c74a9aee135620",
+    "planHash": "7eec5a6c57e234735c36dc91aed27f193aa59011bdc6f7fa42ed62151fca38c2",
     "verdict": "pass",
     "criteria": [
-      "remove-top-panel",
-      "editorial-minimal-only"
+      "populate-json-files",
+      "load-sections-from-json",
+      "dynamic-json-updates"
     ],
-    "evidence": "Verified plan packet against index.html and .omg/drafts/check-editorial.mjs. The objective, constraints (preserving Template C sections 01.PROFILE through 06.ARCHIVES, hero section, modal/toast helpers, footer, and brand palette while deleting <header>), and resolved decision are directly enforced by check-editorial.mjs, which validates both static removal of <header> and multi-template switcher code and runtime DOM rendering of Template C in a node:vm sandbox.",
+    "evidence": "Verified plan packet against src/data/portfolio.ts, src/components/EditorialTemplate.tsx, tsconfig.json, and .omg/drafts/check-json-data.mjs. All four target JSON files (data/Career.json, data/Works.json, data/TechnicalProficiency.json, data/Credentials.json), TypeScript configuration (resolveJsonModule and include data), icon string mapping for LucideIcon in portfolio.ts, and dynamic loading via Vite JSON imports + usePortfolioData() hook in EditorialTemplate.tsx are coherently scoped and verified by check-json-data.mjs and tsc --noEmit.",
     "findings": [],
-    "reviewerConversationId": "5cd5bbae-eaa1-47e6-9df9-dc2fc212fea9",
-    "receivedAt": "2026-10-18T11:47:50.163Z"
+    "reviewerConversationId": "65bc369e-fc52-49f3-8958-01fa4a350195",
+    "receivedAt": "2026-10-19T10:59:40.483Z"
   },
   "checks": [
     {
-      "id": "check-editorial",
+      "id": "check-json-data",
       "files": [
-        "index.html"
+        "data/Career.json",
+        "data/Works.json",
+        "data/TechnicalProficiency.json",
+        "data/Credentials.json",
+        "tsconfig.json",
+        "src/data/portfolio.ts",
+        "src/components/EditorialTemplate.tsx"
       ],
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ],
       "argv": [
         "node",
-        ".omg/drafts/check-editorial.mjs"
+        ".omg/drafts/check-json-data.mjs"
       ],
       "exitCode": 0,
       "signal": null,
       "status": "pass",
-      "evidence": ".omg/evidence/a4eab19f-4435-4f28-bc61-cd09699bdcc5.txt",
-      "evidenceHash": "63a33c0153c3dd8d6fca673c2a5051d7e84acef52f712f6b006926252fa26360",
-      "at": "2026-10-18T12:04:55.236Z"
+      "evidence": ".omg/evidence/1ae6dbe9-8ae1-4d27-9c91-839183698cf5.txt",
+      "evidenceHash": "4017835d18c44d9ec01045d707b520c57b31aa429898e7d590088889d1911465",
+      "at": "2026-10-19T11:10:38.818Z"
     }
   ],
   "hashes": {
-    "index.html": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+    "data/Career.json": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894",
+    "data/Works.json": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d",
+    "data/TechnicalProficiency.json": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3",
+    "data/Credentials.json": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7",
+    "tsconfig.json": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520",
+    "src/data/portfolio.ts": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d",
+    "src/components/EditorialTemplate.tsx": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4"
   },
   "sections": [
     {
-      "id": "index.html:1",
-      "file": "index.html",
+      "id": "data/Career.json:1",
+      "file": "data/Career.json",
+      "start": 1,
+      "end": 56,
+      "hash": "fce9780b8f25cabbd955eb331becf52eb8a974cc2d1813b3ab19da95dca31894"
+    },
+    {
+      "id": "data/Works.json:1",
+      "file": "data/Works.json",
+      "start": 1,
+      "end": 75,
+      "hash": "e510c2aec8512296f2eb429c9e6c5b0995bbc63655dee3f8b08e4eb9d1e5682d"
+    },
+    {
+      "id": "data/TechnicalProficiency.json:1",
+      "file": "data/TechnicalProficiency.json",
+      "start": 1,
+      "end": 30,
+      "hash": "0462a47b3b64d9cb9fd1cf5331e2b92649d3ff089d66a0de1bd2729ec71b89f3"
+    },
+    {
+      "id": "data/Credentials.json:1",
+      "file": "data/Credentials.json",
+      "start": 1,
+      "end": 41,
+      "hash": "42c57c06814e3c9ca083e1bcd37ad44c2d6207452b108ce671a53caf0d37ebc7"
+    },
+    {
+      "id": "tsconfig.json:1",
+      "file": "tsconfig.json",
+      "start": 1,
+      "end": 19,
+      "hash": "a15de3c1b7dfa12854ba06951a7ae23ade34127c0db9398c99169ada7445e520"
+    },
+    {
+      "id": "src/data/portfolio.ts:1",
+      "file": "src/data/portfolio.ts",
       "start": 1,
       "end": 120,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d"
     },
     {
-      "id": "index.html:121",
-      "file": "index.html",
+      "id": "src/data/portfolio.ts:121",
+      "file": "src/data/portfolio.ts",
       "start": 121,
-      "end": 240,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+      "end": 196,
+      "hash": "fdc0aabd471423800342a09e4fb16447802ade0b0252a375eb17fd2dbb7dd82d"
     },
     {
-      "id": "index.html:241",
-      "file": "index.html",
-      "start": 241,
-      "end": 360,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+      "id": "src/components/EditorialTemplate.tsx:1",
+      "file": "src/components/EditorialTemplate.tsx",
+      "start": 1,
+      "end": 120,
+      "hash": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4"
     },
     {
-      "id": "index.html:361",
-      "file": "index.html",
-      "start": 361,
-      "end": 480,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
-    },
-    {
-      "id": "index.html:481",
-      "file": "index.html",
-      "start": 481,
-      "end": 600,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
-    },
-    {
-      "id": "index.html:601",
-      "file": "index.html",
-      "start": 601,
-      "end": 720,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
-    },
-    {
-      "id": "index.html:721",
-      "file": "index.html",
-      "start": 721,
-      "end": 810,
-      "hash": "17a378b9e38932321198c385818a753faeb88927eb4d7e5f73077a758f283094"
+      "id": "src/components/EditorialTemplate.tsx:121",
+      "file": "src/components/EditorialTemplate.tsx",
+      "start": 121,
+      "end": 180,
+      "hash": "d2d9c0a835416a353e381b75cd290c3293fa264c88b820c5400b62bcab433ec4"
     }
   ]
 }

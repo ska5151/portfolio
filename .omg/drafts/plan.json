@@ -1,26 +1,40 @@
 {
-  "intent": "Show only Template C (3. 에디토리얼 미니멀) and remove the sticky top header panel in index.html",
+  "intent": "Load portfolio sections 02 (Career & Leadership), 03 (Selected Works), 04 (TechnicalProficiency), and 05 (Credentials & Education) from data/Career.json, data/Works.json, data/TechnicalProficiency.json, and data/Credentials.json populated with current webpage data and dynamically reflected on edit",
   "criteria": [
-    "remove-top-panel",
-    "editorial-minimal-only"
+    "populate-json-files",
+    "load-sections-from-json",
+    "dynamic-json-updates"
   ],
   "files": [
-    "index.html"
+    "data/Career.json",
+    "data/Works.json",
+    "data/TechnicalProficiency.json",
+    "data/Credentials.json",
+    "tsconfig.json",
+    "src/data/portfolio.ts",
+    "src/components/EditorialTemplate.tsx"
   ],
   "testFiles": [],
   "checks": [
     {
-      "id": "check-editorial",
+      "id": "check-json-data",
       "argv": [
         "node",
-        ".omg/drafts/check-editorial.mjs"
+        ".omg/drafts/check-json-data.mjs"
       ],
       "files": [
-        "index.html"
+        "data/Career.json",
+        "data/Works.json",
+        "data/TechnicalProficiency.json",
+        "data/Credentials.json",
+        "tsconfig.json",
+        "src/data/portfolio.ts",
+        "src/components/EditorialTemplate.tsx"
       ],
       "criteria": [
-        "remove-top-panel",
-        "editorial-minimal-only"
+        "populate-json-files",
+        "load-sections-from-json",
+        "dynamic-json-updates"
       ]
     }
   ]

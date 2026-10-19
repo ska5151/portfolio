@@ -1,8 +1,16 @@
 {
   "agent": "oma-doc-reader",
-  "summary": "The portfolio workspace contains a single file, index.html (1,395 lines), using Tailwind CSS CDN and Lucide icons. The sticky top panel (<header>, lines 80-115) renders the brand indicator and 3 template switcher buttons (tab-btn-A/B/C) managed by switchTemplate() and renderCurrentTemplate() (lines 1347-1376) with default currentTemplate = 'A' (line 412). Template C ('3. 에디토리얼 미니멀') is defined in renderTemplateC() (lines 1133-1344) and relies on shared portfolioData (lines 171-410), renderHeroSection('C') (lines 506-611), modal/toast helpers (lines 416-503), and an internal Template 03 intro banner (lines 1136-1143) plus anchor nav bar (lines 1145-1156).",
+  "summary": "Read package.json (React 19.1.0, Vite 6.4.4, TypeScript 5.8.3, lucide-react 0.511.0, vite-plugin-singlefile 2.3.4), vite.config.ts, index.html, src/data/portfolio.ts, src/components/EditorialTemplate.tsx, and src/App.tsx. Mapped Sections 02 (companyActivities -> data/Career.json), 03 (projects -> data/Works.json), 04 (skills with string-to-LucideIcon mapping -> data/TechnicalProficiency.json), and 05 (certifications + education -> data/Credentials.json), and noted viteSingleFile/file:// constraints.",
   "sources": [
-    "index.html"
+    "package.json",
+    "vite.config.ts",
+    "index.html",
+    "src/data/portfolio.ts",
+    "src/components/EditorialTemplate.tsx",
+    "src/App.tsx"
   ],
-  "unknowns": []
+  "unknowns": [
+    "Exact filesystem placement of data/*.json and runtime fetch vs Vite import/HMR mechanism.",
+    "Whether Section 03 heading meta should dynamically reflect Works.json item count."
+  ]
 }

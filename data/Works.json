@@ -1,0 +1,74 @@
+[
+  {
+    "id": "proj-1",
+    "category": "(주) 케이비드",
+    "title": "정비마법사2",
+    "period": "",
+    "summary": "차량 및 오토바이 정비 윈도우 프로그램",
+    "details": [],
+    "techs": ["C#", "Mysql", "DevExpress"]
+  },
+  {
+    "id": "proj-2",
+    "category": "(주) 케이비드",
+    "title": "JUCHA 백엔드 API 작업",
+    "period": "",
+    "summary": "차량 및 오토바이 주차 관리 시스템",
+    "details": ["베트남 타겟"],
+    "techs": ["Node"]
+  },
+  {
+    "id": "proj-3",
+    "category": "(주) 케이비드",
+    "title": "대한자동차",
+    "period": "",
+    "summary": "자동차 부품 생산 프로그램",
+    "details": ["POP용, 사무실용, 대시보드용"],
+    "techs": ["C#", "Mysql", "DevExpress"]
+  },
+  {
+    "id": "proj-4",
+    "category": "(주) 케이비드",
+    "title": "탈라고 백엔드 API 작업",
+    "period": "",
+    "summary": "차량점검 프로그램",
+    "details": ["원격지 차량점검 및 차량 정비, 서비스 판매-구매 예약"],
+    "techs": ["Node"]
+  },
+  {
+    "id": "proj-5",
+    "category": "(주) 케이비드",
+    "title": "다이슈",
+    "period": "",
+    "summary": "비공개 채팅 솔루션(주식)",
+    "details": [],
+    "techs": ["Node"]
+  },
+  {
+    "id": "proj-6",
+    "category": "(주) 케이비드",
+    "title": "반반 백엔드 API 작업",
+    "period": "",
+    "summary": "소개팅 및 모임 앱",
+    "details": [],
+    "techs": ["Node"]
+  },
+  {
+    "id": "proj-7",
+    "category": "(주) 케이비드",
+    "title": "나스테크",
+    "period": "",
+    "summary": "자동차 생산 ERP 프로그램",
+    "details": [],
+    "techs": ["C#", "Mysql", "DevExpress", "Spread.net"]
+  },
+  {
+    "id": "proj-8",
+    "category": "(주) 케이비드",
+    "title": "LVMC",
+    "period": "",
+    "summary": "딜러 차량 인도 프로그램",
+    "details": [],
+    "techs": ["React", "AWS", "Mysql"]
+  }
+]

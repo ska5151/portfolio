@@ -1,5 +1,5 @@
 import { Lock } from 'lucide-react';
-import { portfolioData } from '../data/portfolio';
+import { usePortfolioData } from '../data/portfolio';
 import HeroSection from './HeroSection';
 import SectionHeading from './SectionHeading';
 
@@ -14,6 +14,8 @@ interface Props {
           시니어/리드 엔지니어의 신뢰감을 극대화하는 경력 중심 배치
    ============================================================================ */
 export default function EditorialTemplate({ onCopy, onOpenDoc }: Props) {
+    const portfolioData = usePortfolioData();
+
     return (
         <div className="template-fade max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
             {/* 상단 퀵 앵커 바 */}
