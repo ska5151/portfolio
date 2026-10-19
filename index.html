@@ -170,7 +170,7 @@
         // 포트폴리오 공통 데이터 (필수 6개 섹션 데이터 완비)
         const portfolioData = {
             profile: {
-                // 이름·연락처·주소 등 개인정보는 .env(info)에서 불러와 채움 (applyEnvProfile)
+                // 이름·연락처·주소 등 개인정보는 .env(name, name_en, phone, email, address)에서 불러와 채움 (applyEnvProfile)
                 name: "",
                 nameEn: "",
                 engTitle: "Senior Full-Stack & Cloud Architect",
@@ -447,7 +447,7 @@
             const defaults = {
                 file_password: "",
                 password: "",
-                info: {}
+                profile: {}
             };
             try {
                 const res = await fetch('.env', { cache: 'no-store' });
@@ -455,10 +455,12 @@
                     const text = await res.text();
                     // .env는 중괄호 없는 JSON 본문 형식 ("key": value, ...)
                     try {
-                        const parsed = JSON.parse('{' + text.replace(/^﻿/, '') + '}');
+                        const parsed = JSON.parse('{' + text.replace(/^\uFEFF/, '') + '}');
                         if (typeof parsed.file_password === 'string') defaults.file_password = parsed.file_password.trim();
                         if (typeof parsed.password === 'string') defaults.password = parsed.password.trim();
-                        if (parsed.info && typeof parsed.info === 'object') defaults.info = parsed.info;
+                        ['name', 'name_en', 'phone', 'email', 'address'].forEach(key => {
+                            if (typeof parsed[key] === 'string') defaults.profile[key] = parsed[key];
+                        });
                         cachedEnvValues = defaults;
                         return cachedEnvValues;
                     } catch (parseErr) {
@@ -480,9 +482,9 @@
             return cachedEnvValues;
         }
 
-        // .env의 info 값을 프로필 데이터와 화면의 정적 영역(제목·인증 게이트·푸터)에 반영
+        // .env의 개인정보 값을 프로필 데이터와 화면의 정적 영역(제목·인증 게이트·푸터)에 반영
         async function applyEnvProfile() {
-            const info = (await loadEnvValues()).info || {};
+            const info = (await loadEnvValues()).profile || {};
             const str = v => (typeof v === 'string' ? v.trim() : '');
             const name = str(info.name);
             const nameEn = str(info.name_en);
