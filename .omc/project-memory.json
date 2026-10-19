@@ -9,7 +9,7 @@
     "runtime": null
   },
   "build": {
-    "buildCommand": null,
+    "buildCommand": "cd \"D:/project/ksy/portfolio\" && printf '.env\\r\\n.env.*\\r\\nnode_modules/\\r\\ndist/\\r\\n' > .gitignore && npm install --no-audit --no-fund --save-exact -D vite@6.4.4 vite-plugin-singlefile@2.3.4 2>&1 | tail -3 && grep -E '\"vite|singlefile' package.json && npm audit 2>&1 | tail -4 && npm run build 2>&1 | tail -3",
     "testCommand": null,
     "lintCommand": null,
     "devCommand": null,
@@ -54,6 +54,79 @@
       ]
     }
   },
-  "hotPaths": [],
+  "hotPaths": [
+    {
+      "path": "index.html",
+      "accessCount": 6,
+      "lastAccessed": 1792376286749,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\HeroSection.tsx",
+      "accessCount": 2,
+      "lastAccessed": 1792377238015,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\user\\AppData\\Local\\Temp\\claude\\D--project-ksy-portfolio\\f225a496-d00a-4220-b4dc-4257fda78937\\scratchpad\\legacy-index.html",
+      "accessCount": 2,
+      "lastAccessed": 1792377548795,
+      "type": "file"
+    },
+    {
+      "path": "src\\data\\portfolio.ts",
+      "accessCount": 1,
+      "lastAccessed": 1792377148846,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\PageAuthGate.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377176200,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\DocModal.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377177047,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\Toast.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377177697,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\Footer.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377178458,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\SectionHeading.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377231316,
+      "type": "file"
+    },
+    {
+      "path": "src\\components\\EditorialTemplate.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377231894,
+      "type": "file"
+    },
+    {
+      "path": "src\\App.tsx",
+      "accessCount": 1,
+      "lastAccessed": 1792377232651,
+      "type": "file"
+    },
+    {
+      "path": "C:\\Users\\user\\.claude\\projects\\D--project-ksy-portfolio\\f225a496-d00a-4220-b4dc-4257fda78937\\tool-results\\b55oh6ork.txt",
+      "accessCount": 1,
+      "lastAccessed": 1792377553836,
+      "type": "file"
+    }
+  ],
   "userDirectives": []
 }

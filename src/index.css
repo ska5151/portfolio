@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+    --color-brand-main: #6A89A7;     /* 메인 테마 색상 */
+    --color-brand-sub: #BDDDFC;      /* 서브 배경, 태그 및 하이라이트 */
+    --color-brand-accent: #888DF2;   /* 버튼, 아이콘, 강조 포인트 */
+    --color-brand-dark: #384959;     /* 타이틀 텍스트, 네비게이션 및 어두운 배경 영역 */
+    --color-brand-light: #F4F8FB;    /* 가독성을 위한 초연한 배경 틴트 */
+
+    --font-sans: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+    --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+    font-family: 'Pretendard', sans-serif;
+    color: #384959;
+    background-color: #F4F8FB;
+    overflow-x: hidden;
+}
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #F4F8FB;
+}
+::-webkit-scrollbar-thumb {
+    background: #6A89A7;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #384959;
+}
+.template-fade {
+    animation: fadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.skill-bar-fill {
+    transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-hover {
+    transition: all 0.25s ease;
+}
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 32px -12px rgba(56, 73, 89, 0.15);
+}
