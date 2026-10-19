@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>권성윤 (Sungyun Kwon) — 에디토리얼 미니멀 포트폴리오</title>
+    <title>에디토리얼 미니멀 포트폴리오</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Pretendard & JetBrains Mono Fonts -->
@@ -86,7 +86,7 @@
                 </div>
                 <div>
                     <h2 class="font-bold text-base">포트폴리오 열람 인증</h2>
-                    <p class="text-xs text-brand-sub/80 font-mono">PROTECTED PORTFOLIO // SUNGYUN KWON</p>
+                    <p class="text-xs text-brand-sub/80 font-mono">PROTECTED PORTFOLIO // <span data-env-name-en-upper></span></p>
                 </div>
             </div>
             <div class="p-6 space-y-4">
@@ -170,14 +170,16 @@
         // 포트폴리오 공통 데이터 (필수 6개 섹션 데이터 완비)
         const portfolioData = {
             profile: {
-                name: "권성윤 (Sungyun Kwon)",
+                // 이름·연락처·주소 등 개인정보는 .env(info)에서 불러와 채움 (applyEnvProfile)
+                name: "",
+                nameEn: "",
                 engTitle: "Senior Full-Stack & Cloud Architect",
                 tagline: "사용자의 본질적인 니즈를 깊이 고민하고 시스템의 빈틈을 집요하게 메우며, 완성도 높은 차별화된 서비스를 구현하는 개발자입니다.",
                 avatar: "image/profile.png",
                 fallbackAvatar: "https://placehold.co/400x400/384959/BDDDFC?text=SK",
-                email: "ska515151@gmail.com",
-                phone: "010-2387-0635",
-                location: "대구광역시 수성구 청호로 96안길 33 아스톤하우스 301호",
+                email: "",
+                phone: "",
+                location: "",
                 status: "이직 및 기술 자문 논의 가능",
                 socials: [
                     { name: "GitHub", handle: "github.com/sungyun-arch", url: "https://github.com", icon: "github" },
@@ -443,13 +445,25 @@
         async function loadEnvValues() {
             if (cachedEnvValues !== null) return cachedEnvValues;
             const defaults = {
-                file_password: "238706351",
-                password: "910228_ksy"
+                file_password: "",
+                password: "",
+                info: {}
             };
             try {
                 const res = await fetch('.env', { cache: 'no-store' });
                 if (res.ok) {
                     const text = await res.text();
+                    // .env는 중괄호 없는 JSON 본문 형식 ("key": value, ...)
+                    try {
+                        const parsed = JSON.parse('{' + text.replace(/^﻿/, '') + '}');
+                        if (typeof parsed.file_password === 'string') defaults.file_password = parsed.file_password.trim();
+                        if (typeof parsed.password === 'string') defaults.password = parsed.password.trim();
+                        if (parsed.info && typeof parsed.info === 'object') defaults.info = parsed.info;
+                        cachedEnvValues = defaults;
+                        return cachedEnvValues;
+                    } catch (parseErr) {
+                        // JSON 형식이 아니면 아래 정규식으로 암호만 추출
+                    }
                     const fileMatch = text.match(/(?:^|[,\r\n\s])["']?file_password["']?\s*[:=]\s*(?:"([^"]*)"|'([^']*)'|([^,\r\n\s]+))/i);
                     const pageMatch = text.match(/(?:^|[,\r\n\s])["']?password["']?\s*[:=]\s*(?:"([^"]*)"|'([^']*)'|([^,\r\n\s]+))/i);
                     if (fileMatch) {
@@ -460,10 +474,28 @@
                     }
                 }
             } catch (err) {
-                // file:// 환경에서 fetch 제한 시 .env 기본값 fallback
+                // file:// 환경 등에서 fetch 실패 시 빈 값 유지 (민감 정보는 소스에 두지 않음)
             }
             cachedEnvValues = defaults;
             return cachedEnvValues;
+        }
+
+        // .env의 info 값을 프로필 데이터와 화면의 정적 영역(제목·인증 게이트·푸터)에 반영
+        async function applyEnvProfile() {
+            const info = (await loadEnvValues()).info || {};
+            const str = v => (typeof v === 'string' ? v.trim() : '');
+            const name = str(info.name);
+            const nameEn = str(info.name_en);
+            const p = portfolioData.profile;
+            p.name = name && nameEn ? `${name} (${nameEn})` : (name || nameEn);
+            p.nameEn = nameEn;
+            p.email = str(info.email);
+            p.phone = str(info.phone);
+            p.location = str(info.address);
+
+            if (p.name) document.title = `${p.name} — 에디토리얼 미니멀 포트폴리오`;
+            document.querySelectorAll('[data-env-name-en-upper]').forEach(el => { el.textContent = nameEn.toUpperCase(); });
+            document.querySelectorAll('[data-env-full-name]').forEach(el => { el.textContent = p.name; });
         }
 
         async function loadFilePasswordFromEnv() {
@@ -482,7 +514,11 @@
             const pwdError = document.getElementById('page-password-error');
             const expectedPassword = await loadPagePasswordFromEnv();
 
-            if (pwdInput.value.trim() !== expectedPassword) {
+            // .env를 불러오지 못해 기대 암호가 비어 있으면 항상 거부
+            if (!expectedPassword || pwdInput.value.trim() !== expectedPassword) {
+                pwdError.textContent = expectedPassword
+                    ? '암호가 올바르지 않습니다.'
+                    : '.env 설정을 불러오지 못했습니다. 웹 서버(http://)로 열어주세요.';
                 pwdError.classList.remove('hidden');
                 pwdInput.focus();
                 return;
@@ -497,6 +533,7 @@
             const footer = document.getElementById('page-footer');
             viewport.classList.remove('hidden');
             if (footer) footer.classList.remove('hidden');
+            await applyEnvProfile();
             renderCurrentTemplate();
         }
 
@@ -533,7 +570,11 @@
             const pwdError = document.getElementById('doc-password-error');
             const expectedPassword = await loadFilePasswordFromEnv();
 
-            if (pwdInput.value.trim() !== expectedPassword) {
+            // .env를 불러오지 못해 기대 암호가 비어 있으면 항상 거부
+            if (!expectedPassword || pwdInput.value.trim() !== expectedPassword) {
+                pwdError.textContent = expectedPassword
+                    ? '암호가 올바르지 않습니다.'
+                    : '.env 설정을 불러오지 못했습니다. 웹 서버(http://)로 열어주세요.';
                 pwdError.classList.remove('hidden');
                 pwdInput.focus();
                 return;
@@ -646,7 +687,7 @@
                 <div class="template-fade max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
                     <!-- 상단 퀵 앵커 바 -->
                     <nav class="flex flex-wrap items-center justify-between gap-2 border-y-2 border-brand-dark py-3 text-xs font-mono font-bold text-brand-dark">
-                        <span>INDEX // SUNGYUN KWON PORTFOLIO</span>
+                        <span>INDEX // ${portfolioData.profile.nameEn.toUpperCase()} PORTFOLIO</span>
                         <div class="flex flex-wrap gap-4">
                             <a href="#section-hero" class="hover:text-brand-accent">01.PROFILE</a>
                             <a href="#section-activities" class="hover:text-brand-accent">02.CAREER</a>
@@ -840,6 +881,7 @@
             lucide.createIcons();
             const pageInput = document.getElementById('page-password-input');
             if (pageInput) pageInput.focus();
+            applyEnvProfile();
         });
     </script>
 
@@ -848,7 +890,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
             <div class="flex items-center gap-2">
                 <span class="w-2.5 h-2.5 rounded-full bg-brand-accent"></span>
-                <span class="font-semibold text-white">권성윤 (Sungyun Kwon) — Developer Portfolio</span>
+                <span class="font-semibold text-white"><span data-env-full-name></span> — Developer Portfolio</span>
             </div>
             <div class="flex items-center gap-4 font-mono text-[11px] text-brand-sub">
                 <span>#6A89A7</span>

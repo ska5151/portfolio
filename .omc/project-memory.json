@@ -1,0 +1,59 @@
+{
+  "version": "1.0.0",
+  "lastScanned": 1792375041092,
+  "projectRoot": "D:\\project\\ksy\\portfolio",
+  "techStack": {
+    "languages": [],
+    "frameworks": [],
+    "packageManager": null,
+    "runtime": null
+  },
+  "build": {
+    "buildCommand": null,
+    "testCommand": null,
+    "lintCommand": null,
+    "devCommand": null,
+    "scripts": {}
+  },
+  "conventions": {
+    "namingStyle": null,
+    "importStyle": null,
+    "testPattern": null,
+    "fileOrganization": null
+  },
+  "structure": {
+    "isMonorepo": false,
+    "workspaces": [],
+    "mainDirectories": [
+      "docs"
+    ],
+    "gitBranches": {
+      "defaultBranch": "master",
+      "branchingStrategy": null
+    }
+  },
+  "customNotes": [],
+  "directoryMap": {
+    "docs": {
+      "path": "docs",
+      "purpose": "Documentation",
+      "fileCount": 2,
+      "lastAccessed": 1792375041068,
+      "keyFiles": [
+        "성적증명서.pdf",
+        "졸업증명서.pdf"
+      ]
+    },
+    "image": {
+      "path": "image",
+      "purpose": null,
+      "fileCount": 1,
+      "lastAccessed": 1792375041068,
+      "keyFiles": [
+        "profile.png"
+      ]
+    }
+  },
+  "hotPaths": [],
+  "userDirectives": []
+}
