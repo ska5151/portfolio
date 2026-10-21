@@ -64,14 +64,14 @@ export default function EditorialTemplate({ onCopy, onOpenDoc }: Props) {
 
             {/* 03. 주요 프로젝트 */}
             <section id="section-projects" className="space-y-6">
-                <SectionHeading number="03." title="주요 프로젝트 (Selected Works)" meta="8 KEY PROJECTS" />
+                <SectionHeading number="03." title="주요 프로젝트 (Selected Works)" meta="PROJECTS" />
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     {portfolioData.projects.map((proj, idx) => (
                         <article key={proj.id} className="bg-white border-2 border-brand-dark rounded-2xl p-6 flex flex-col justify-between space-y-5 shadow-[4px_4px_0px_#BDDDFC]">
                             <div className="space-y-3">
                                 <div className="flex items-center justify-between border-b border-brand-sub pb-2.5">
-                                    <span className="font-mono text-xs font-bold text-brand-accent">PROJECT 0{idx + 1} // {proj.category}</span>
+                                    <span className="font-mono text-xs font-bold text-brand-accent">PROJECT {String(idx + 1).padStart(2, '0')} // {proj.category}</span>
                                     {proj.period && <span className="font-mono text-xs text-brand-main">{proj.period}</span>}
                                 </div>
                                 <h3 className="text-lg font-extrabold text-brand-dark">{proj.title}</h3>

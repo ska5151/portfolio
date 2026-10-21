@@ -2,82 +2,91 @@
   {
     "id": "proj-1",
     "category": "(주) 케이비드",
-    "title": "정비마법사2",
-    "period": "",
-    "summary": "차량 및 오토바이 정비 윈도우 프로그램",
+    "title": "정비마법사 솔루션 유지보수",
+    "period": "2020.08.01 ~ 현재",
+    "summary": "차량정비 ERP 프로그램",
     "details": [],
-    "techs": ["C#", "Mysql", "DevExpress"]
+    "techs": ["VB6", "MySql"]
   },
   {
     "id": "proj-2",
     "category": "(주) 케이비드",
-    "title": "JUCHA 백엔드 API 작업",
-    "period": "",
-    "summary": "차량 및 오토바이 주차 관리 시스템",
-    "details": ["베트남 타겟"],
-    "techs": ["Node"]
+    "title": "판매마법사 솔루션 유지보수",
+    "period": "2020.08.01 ~ 현재",
+    "summary": "판매 ERP 프로그램",
+    "details": [],
+    "techs": ["VB6", "MySql"]
   },
   {
     "id": "proj-3",
     "category": "(주) 케이비드",
-    "title": "대한자동차",
-    "period": "",
-    "summary": "자동차 부품 생산 프로그램",
-    "details": ["POP용, 사무실용, 대시보드용"],
-    "techs": ["C#", "Mysql", "DevExpress"]
+    "title": "LVMC",
+    "period": "2020.08.01 ~ 2021.12.31",
+    "summary": "미얀마 자동차 및 부품 유통/생산/판매/AS 시스템 개발",
+    "details": [],
+    "techs": ["VB6", "MySql"]
   },
   {
     "id": "proj-4",
     "category": "(주) 케이비드",
-    "title": "탈라고 백엔드 API 작업",
-    "period": "",
-    "summary": "차량점검 프로그램",
-    "details": ["원격지 차량점검 및 차량 정비, 서비스 판매-구매 예약"],
-    "techs": ["Node"]
+    "title": "정비마법사2 서비스 개발",
+    "period": "2021.03.01 ~ 2022.01.31",
+    "summary": "차량정비 ERP 프로그램",
+    "details": [],
+    "techs": ["C#", "Mysql", "DevExpress"]
   },
   {
     "id": "proj-5",
     "category": "(주) 케이비드",
-    "title": "다이슈",
-    "period": "",
-    "summary": "비공개 채팅 솔루션(주식)",
+    "title": "JUCHA",
+    "period": "2021.06.01 ~ 2024.09.30",
+    "summary": "베트남 오토바이 파킹 플랫폼 서비스 개발",
     "details": [],
-    "techs": ["Node"]
+    "techs": ["node", "jsp"]
   },
   {
     "id": "proj-6",
     "category": "(주) 케이비드",
-    "title": "반반 백엔드 API 작업",
-    "period": "",
-    "summary": "소개팅 및 모임 앱",
+    "title": "DHMotors",
+    "period": "2022.05.01 ~ 2024.04.09",
+    "summary": "생산 ERP, POP 시스템 개발",
     "details": [],
-    "techs": ["Node"]
+    "techs": ["C#", "MySql", "DevExpress"]
   },
   {
     "id": "proj-7",
     "category": "(주) 케이비드",
-    "title": "나스테크",
-    "period": "",
-    "summary": "자동차 생산 ERP 프로그램",
+    "title": "다이슈",
+    "period": "2024.02.01 ~ 2024.04.09",
+    "summary": "채팅 기반 고객관리 프로그램",
     "details": [],
-    "techs": ["C#", "Mysql", "DevExpress", "Spread.net"]
+    "techs": ["node", "jsp"]
   },
   {
     "id": "proj-8",
     "category": "(주) 케이비드",
-    "title": "발주나라",
-    "period": "",
-    "summary": "어페럴 사이트 개발",
+    "title": "나스테크 ERP",
+    "period": "2024.10.01 ~ 2025.05.09",
+    "summary": "생산 ERP 프로그램 개발",
     "details": [],
-    "techs": ["스쿨호스팅", "PHP", "phpmyadmin", "MySql"]
+    "techs": ["C#", "MySql", "Spread.net"]
   },
   {
     "id": "proj-9",
     "category": "(주) 케이비드",
-    "title": "LVMC",
-    "period": "",
-    "summary": "딜러 차량 인도 프로그램",
+    "title": "발주나라",
+    "period": "2026.03.27 ~ 현재",
+    "summary": "어페럴 물류관리 솔루션 프레임워크 개발",
     "details": [],
-    "techs": ["React", "AWS", "Mysql"]
+    "techs": ["PHP", "phpMyAdmin", "MySql", "AI"]
+  },
+  {
+    "id": "proj-10",
+    "category": "(주) 케이비드",
+    "title": "LVMC",
+    "period": "2026.09.28 ~ 현재",
+    "summary": "고객 판매/인도 프로그램 개발",
+    "details": [],
+    "techs": ["React", "AI"]
   }
 ]
