@@ -1,7 +1,0 @@
-{
-  "tool_name": "Bash",
-  "tool_input_preview": "{\"command\":\"cd \\\"D:/project/ksy/portfolio\\\" && SP=\\\"C:/Users/user/AppData/Local/Temp/claude/D--project-ksy-portfolio/f225a496-d00a-4220-b4dc-4257fda78937/scratchpad\\\"\\nfor i in $(seq 1 20); do c=$(cur...",
-  "error": "Exit code 7\npreview http: 000\n===== http (vite preview) =====\ngate input: missing\ngate label ok: false\ntitle ok: false\nwrong pw message: undefined\nempty pw blocked: false\nunlocked: true | has undefined: false\nname rendered: false\nname_en rendered: false\nphone rendered: false\nemail rendered: false\naddress rendered: false\nfooter full name: false\nsections: false,false,false,false,false,false\navatar loaded: no-img\ndoc wrong msg: undefined\ndoc download href: null\n--- .env exposed by preview?\n000",
-  "timestamp": "2026-10-19T02:38:12.653Z",
-  "retry_count": 1
-}
