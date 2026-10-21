@@ -65,6 +65,15 @@
   {
     "id": "proj-8",
     "category": "(주) 케이비드",
+    "title": "발주나라",
+    "period": "",
+    "summary": "어페럴 사이트 개발",
+    "details": [],
+    "techs": ["스쿨호스팅", "PHP", "phpmyadmin", "MySql"]
+  },
+  {
+    "id": "proj-9",
+    "category": "(주) 케이비드",
     "title": "LVMC",
     "period": "",
     "summary": "딜러 차량 인도 프로그램",
